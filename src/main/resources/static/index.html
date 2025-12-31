@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Music Player App</title>
+    <title>MusicApp - Stream Your Music</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
@@ -13,268 +13,328 @@
         }
         
         body {
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            background: linear-gradient(135deg, #1a1a1a, #121212);
             color: white;
             min-height: 100vh;
-            padding: 20px;
         }
         
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        header {
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
             padding: 40px 20px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            margin-bottom: 30px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        h1 {
-            font-size: 3.5rem;
-            margin-bottom: 10px;
-            background: linear-gradient(90deg, #1db954, #1ed760);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            display: inline-block;
-        }
-        
-        .tagline {
-            font-size: 1.3rem;
-            opacity: 0.9;
-            margin-bottom: 30px;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
         }
         
         .logo {
             font-size: 4rem;
             margin-bottom: 20px;
-            animation: float 3s ease-in-out infinite;
+            color: #1db954;
+            animation: pulse 2s infinite;
         }
         
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
         }
         
-        .main-nav {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin: 30px 0;
-            flex-wrap: wrap;
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #1db954, #1ed760);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
         
-        .nav-btn {
-            background: linear-gradient(135deg, #1db954, #1ed760);
-            color: white;
-            border: none;
-            padding: 15px 35px;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 5px 15px rgba(29, 185, 84, 0.3);
+        .tagline {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            line-height: 1.6;
         }
         
-        .nav-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(29, 185, 84, 0.4);
-            background: linear-gradient(135deg, #1ed760, #1db954);
-        }
-        
+        /* Feature Cards */
         .features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 25px;
-            margin: 50px 0;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
         }
         
         .feature-card {
             background: rgba(255, 255, 255, 0.05);
             padding: 30px;
             border-radius: 15px;
-            backdrop-filter: blur(10px);
+            text-align: center;
+            transition: all 0.3s;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s;
         }
         
         .feature-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #1db954;
         }
         
         .feature-icon {
-            font-size: 2.5rem;
+            font-size: 3rem;
             margin-bottom: 20px;
             color: #1db954;
         }
         
         .feature-card h3 {
             margin-bottom: 15px;
-            color: #1db954;
             font-size: 1.5rem;
         }
         
-        .test-links {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 30px;
-            border-radius: 15px;
-            margin: 40px 0;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        /* CTA Buttons */
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+            justify-content: center;
         }
         
-        .test-links h3 {
-            text-align: center;
-            margin-bottom: 25px;
-            color: #1db954;
-            font-size: 1.8rem;
+        .btn {
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
         }
         
-        .links-grid {
+        .btn-primary {
+            background: linear-gradient(135deg, #1db954, #1ed760);
+            color: white;
+            box-shadow: 0 5px 15px rgba(29, 185, 84, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(29, 185, 84, 0.4);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #1db954;
+        }
+        
+        /* Stats Section */
+        .stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-        }
-        
-        .api-link {
+            gap: 30px;
+            max-width: 1000px;
+            margin: 60px auto;
+            padding: 40px;
             background: rgba(255, 255, 255, 0.05);
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            text-decoration: none;
-            color: white;
-            transition: all 0.3s;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .api-link:hover {
-            background: rgba(29, 185, 84, 0.2);
-            border-color: #1db954;
-            transform: translateY(-2px);
-        }
-        
-        .db-info {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 25px;
             border-radius: 15px;
-            margin-top: 40px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
-        .db-info h3 {
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
             color: #1db954;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
         
-        .credential-box {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 10px;
-            font-family: monospace;
-            border-left: 4px solid #1db954;
+        .stat-label {
+            opacity: 0.8;
+            font-size: 0.9rem;
         }
         
+        /* Footer */
         footer {
             text-align: center;
-            margin-top: 50px;
-            padding-top: 30px;
+            padding: 40px 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            opacity: 0.8;
+            margin-top: 60px;
         }
         
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .footer-link {
+            color: #b3b3b3;
+            text-decoration: none;
+        }
+        
+        .footer-link:hover {
+            color: #1db954;
+        }
+        
+        /* Responsive */
         @media (max-width: 768px) {
             h1 {
                 font-size: 2.5rem;
             }
             
-            .main-nav {
+            .tagline {
+                font-size: 1.1rem;
+            }
+            
+            .cta-buttons {
                 flex-direction: column;
                 align-items: center;
             }
             
-            .nav-btn {
+            .btn {
                 width: 100%;
+                max-width: 300px;
                 justify-content: center;
             }
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="logo">🎵</div>
-            <h1>Music Player App</h1>
-            <p class="tagline">Stream your favorite music anytime, anywhere</p>
-            
-            <div class="main-nav">
-                <a href="/audio-test.html" class="nav-btn">🎵 Audio Streaming Test</a>
-                <a href="/h2-console" class="nav-btn" target="_blank">📊 Database Console</a>
-            </div>
-        </header>
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="logo">🎵</div>
+        <h1>Stream Music Anywhere</h1>
+        <p class="tagline">
+            Discover millions of songs, create playlists, and stream your favorite music 
+            anytime, anywhere. The perfect music streaming experience.
+        </p>
         
-        <div class="features">
-            <div class="feature-card">
-                <div class="feature-icon">📁</div>
-                <h3>Upload MP3 Files</h3>
-                <p>Upload your favorite MP3 files and stream them instantly. Supports large files with chunked streaming and HTTP Range headers for seamless playback.</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">🎧</div>
-                <h3>Smart Audio Player</h3>
-                <p>Modern HTML5 audio player with seeking, play/pause controls, volume adjustment, and support for streaming with partial content requests.</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">📊</div>
-                <h3>Database Management</h3>
-                <p>H2 in-memory database with sample songs. View and manage your music library through a web-based console or REST API endpoints.</p>
-            </div>
+        <div class="cta-buttons">
+            <a href="/music-player.html" class="btn btn-primary">
+                <i class="fas fa-play"></i> Start Listening
+            </a>
+            <a href="/audio-test.html" class="btn btn-secondary">
+                <i class="fas fa-upload"></i> Upload Your Music
+            </a>
+            <a href="/playlist.html" class="btn btn-secondary">
+                <i class="fas fa-list"></i> Create Playlist
+            </a>
         </div>
-        
-        <div class="test-links">
-            <h3>Quick Test Links</h3>
-            <div class="links-grid">
-                <a href="/api/songs" class="api-link" target="_blank">📋 All Songs API</a>
-                <a href="/api/songs/featured" class="api-link" target="_blank">⭐ Featured Songs</a>
-                <a href="/api/stream/list" class="api-link" target="_blank">📁 Uploaded Files</a>
-                <a href="/api/songs/health" class="api-link" target="_blank">❤️ Health Check</a>
-                <a href="/api/songs/search/title?title=lights" class="api-link" target="_blank">🔍 Search Songs</a>
-                <a href="/api/songs/genre/Rock" class="api-link" target="_blank">🎸 Rock Songs</a>
-            </div>
-        </div>
-        
-        <div class="db-info">
-            <h3>Database Access</h3>
-            <p>Use the H2 Console to view and manage your database:</p>
-            <div class="credential-box">
-                <strong>URL:</strong> http://localhost:8080/h2-console<br>
-                <strong>JDBC URL:</strong> jdbc:h2:mem:musicdb<br>
-                <strong>Username:</strong> sa<br>
-                <strong>Password:</strong> (leave empty)
-            </div>
-        </div>
-        
-        <footer>
-            <p>🎵 Music Player App v1.0 | Built with Spring Boot & H2 Database</p>
-            <p>API Base URL: http://localhost:8080/api</p>
-            <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.7;">
-                Upload directory: <code>uploads/audio/</code> | Sample file: <code>sample.mp3</code>
-            </p>
-        </footer>
     </div>
+    
+    <!-- Features -->
+    <div class="features">
+        <div class="feature-card">
+            <div class="feature-icon">🎧</div>
+            <h3>Smart Streaming</h3>
+            <p>High-quality audio streaming with adaptive bitrate for the best listening experience.</p>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">📱</div>
+            <h3>Cross Platform</h3>
+            <p>Access your music from any device - desktop, mobile, or tablet.</p>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">🎨</div>
+            <h3>Personalized</h3>
+            <p>Create custom playlists and get recommendations based on your taste.</p>
+        </div>
+    </div>
+    
+    <!-- Stats -->
+    <div class="stats">
+        <div class="stat-item">
+            <div class="stat-number" id="songCount">0</div>
+            <div class="stat-label">Songs Available</div>
+        </div>
+        
+        <div class="stat-item">
+            <div class="stat-number" id="playlistCount">0</div>
+            <div class="stat-label">Playlists Created</div>
+        </div>
+        
+        <div class="stat-item">
+            <div class="stat-number">∞</div>
+            <div class="stat-label">Streaming Hours</div>
+        </div>
+        
+        <div class="stat-item">
+            <div class="stat-number">24/7</div>
+            <div class="stat-label">Uptime</div>
+        </div>
+    </div>
+    
+    <!-- Final CTA -->
+    <div style="text-align: center; margin: 60px 20px;">
+        <h2 style="margin-bottom: 20px;">Ready to Start Streaming?</h2>
+        <p style="max-width: 600px; margin: 0 auto 30px; opacity: 0.9;">
+            Join thousands of music lovers who are already enjoying their favorite tracks.
+            No credit card required to get started.
+        </p>
+        <a href="/music-player.html" class="btn btn-primary" style="padding: 18px 45px; font-size: 1.2rem;">
+            <i class="fas fa-music"></i> Launch Music Player
+        </a>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="logo" style="font-size: 2rem; margin-bottom: 20px;">🎵 MusicApp</div>
+        
+        <div class="footer-links">
+            <a href="/music-player.html" class="footer-link">Player</a>
+            <a href="/playlist.html" class="footer-link">Playlists</a>
+            <a href="/audio-test.html" class="footer-link">Upload</a>
+            <a href="/h2-console" class="footer-link" target="_blank">Database</a>
+            <a href="/api/songs" class="footer-link" target="_blank">API</a>
+        </div>
+        
+        <p style="margin-top: 30px; opacity: 0.7; font-size: 0.9rem;">
+            Built with Spring Boot & H2 Database • MusicApp v2.0
+        </p>
+    </footer>
+
+    <script>
+        // Load stats on page load
+        window.onload = async function() {
+            try {
+                // Load song count
+                const songsResponse = await fetch('/api/songs');
+                const songsData = await songsResponse.json();
+                if (songsData.success) {
+                    document.getElementById('songCount').textContent = songsData.data.length;
+                }
+                
+                // Load playlist count
+                const playlistsResponse = await fetch('/api/playlists');
+                const playlistsData = await playlistsResponse.json();
+                if (playlistsData.success) {
+                    document.getElementById('playlistCount').textContent = playlistsData.data.length;
+                }
+            } catch (error) {
+                console.error('Error loading stats:', error);
+            }
+        };
+    </script>
 </body>
 </html>

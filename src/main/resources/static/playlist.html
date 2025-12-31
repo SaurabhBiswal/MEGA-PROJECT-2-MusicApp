@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Playlists - Music Player</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #1db954, #1ed760);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .nav-btn:hover {
+            background: rgba(29, 185, 84, 0.3);
+        }
+        
+        .nav-btn.active {
+            background: linear-gradient(135deg, #1db954, #1ed760);
+        }
+        
+        .section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        h2 {
+            color: #1db954;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .playlist-form {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .form-input {
+            flex: 1;
+            min-width: 200px;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            font-size: 16px;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #1db954;
+        }
+        
+        .form-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #1db954, #1ed760);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(29, 185, 84, 0.3);
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(29, 185, 84, 0.4);
+        }
+        
+        button.secondary {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        button.secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        button.danger {
+            background: linear-gradient(135deg, #dc3545, #c82333);
+        }
+        
+        .status {
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+        
+        .success {
+            background: rgba(29, 185, 84, 0.2);
+            color: #1db954;
+            border: 1px solid rgba(29, 185, 84, 0.3);
+        }
+        
+        .error {
+            background: rgba(220, 53, 69, 0.2);
+            color: #dc3545;
+            border: 1px solid rgba(220, 53, 69, 0.3);
+        }
+        
+        .info {
+            background: rgba(13, 110, 253, 0.2);
+            color: #0d6efd;
+            border: 1px solid rgba(13, 110, 253, 0.3);
+        }
+        
+        .playlist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .playlist-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 12px;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+        }
+        
+        .playlist-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(29, 185, 84, 0.3);
+        }
+        
+        .playlist-card h3 {
+            color: #1db954;
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+        
+        .playlist-card p {
+            margin: 10px 0;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+        
+        .playlist-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .playlist-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .song-list {
+            margin-top: 20px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .song-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            margin-bottom: 10px;
+            transition: all 0.3s;
+        }
+        
+        .song-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+        
+        .song-info h4 {
+            color: white;
+            margin-bottom: 5px;
+        }
+        
+        .song-info p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        .song-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #1db954;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .playlist-form {
+                flex-direction: column;
+            }
+            
+            .form-input {
+                min-width: 100%;
+            }
+            
+            .playlist-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎵 Playlist Management</h1>
+            <p class="subtitle">Create, manage, and share your music playlists</p>
+            
+            <div class="nav-links">
+    <a href="/" class="nav-btn">🏠 Home</a>
+    <a href="/music-player.html" class="nav-btn">🎧 Music Player</a>
+    <a href="/audio-test.html" class="nav-btn">🎵 Upload Test</a>
+    <a href="/playlist.html" class="nav-btn active">📋 Playlists</a>
+    <a href="/h2-console" class="nav-btn" target="_blank">📊 Database</a>
+</div>
+        </header>
+        
+        <!-- Create Playlist Section -->
+        <div class="section">
+            <h2>Create New Playlist</h2>
+            <div class="playlist-form">
+                <input type="text" id="playlistName" class="form-input" placeholder="Playlist Name" required>
+                <input type="text" id="playlistDesc" class="form-input" placeholder="Description (Optional)">
+            </div>
+            <div class="form-checkbox">
+                <input type="checkbox" id="isPublic" checked>
+                <label for="isPublic">Make playlist public (visible to everyone)</label>
+            </div>
+            <button onclick="createPlaylist()">Create Playlist</button>
+            <div id="createStatus" class="status"></div>
+        </div>
+        
+        <!-- Browse Playlists Section -->
+        <div class="section">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h2 style="margin: 0;">Public Playlists</h2>
+                <button onclick="loadPlaylists()" class="secondary">🔄 Refresh</button>
+            </div>
+            <div id="playlistsContainer" class="playlist-grid">
+                <!-- Playlists will be loaded here -->
+            </div>
+        </div>
+        
+        <!-- Playlist Details Modal -->
+        <div id="playlistModal" class="section" style="display: none;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h2 id="modalTitle" style="margin: 0;"></h2>
+                <button onclick="closeModal()" class="secondary">✕ Close</button>
+            </div>
+            <p id="modalDescription"></p>
+            <div class="playlist-meta">
+                <span id="modalMeta"></span>
+                <span id="modalSongsCount"></span>
+            </div>
+            
+            <div style="margin: 25px 0;">
+                <h3>Songs in Playlist</h3>
+                <div id="playlistSongs" class="song-list">
+                    <!-- Songs will be loaded here -->
+                </div>
+            </div>
+            
+            <div class="playlist-actions">
+                <button onclick="playPlaylist()" class="secondary">▶️ Play All</button>
+                <button onclick="deletePlaylist()" class="danger">🗑️ Delete Playlist</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        let currentPlaylists = [];
+        let currentPlaylistId = null;
+        
+        // Load playlists on page load
+        window.onload = function() {
+            loadPlaylists();
+            showStatus('Playlist management loaded. Create or browse playlists!', 'info', 'createStatus');
+        };
+        
+        // Create a new playlist
+        async function createPlaylist() {
+            const name = document.getElementById('playlistName').value.trim();
+            const description = document.getElementById('playlistDesc').value.trim();
+            const isPublic = document.getElementById('isPublic').checked;
+            
+            if (!name) {
+                showStatus('Please enter a playlist name', 'error', 'createStatus');
+                return;
+            }
+            
+            try {
+                showStatus('Creating playlist...', 'info', 'createStatus');
+                
+                const response = await fetch('/api/playlists', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        name: name,
+                        description: description,
+                        isPublic: isPublic
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showStatus('✅ Playlist created successfully!', 'success', 'createStatus');
+                    
+                    // Clear form
+                    document.getElementById('playlistName').value = '';
+                    document.getElementById('playlistDesc').value = '';
+                    
+                    // Refresh playlist list
+                    loadPlaylists();
+                } else {
+                    showStatus(`❌ Error: ${result.message}`, 'error', 'createStatus');
+                }
+            } catch (error) {
+                showStatus(`❌ Error: ${error.message}`, 'error', 'createStatus');
+            }
+        }
+        
+        // Load all public playlists
+        async function loadPlaylists() {
+            try {
+                showStatus('Loading playlists...', 'info', 'createStatus');
+                
+                const response = await fetch('/api/playlists');
+                const result = await response.json();
+                
+                if (result.success) {
+                    currentPlaylists = result.data;
+                    displayPlaylists(currentPlaylists);
+                    showStatus(`✅ Loaded ${result.data.length} playlists`, 'success', 'createStatus');
+                } else {
+                    showStatus(`❌ Error: ${result.message}`, 'error', 'createStatus');
+                }
+            } catch (error) {
+                showStatus(`❌ Error: ${error.message}`, 'error', 'createStatus');
+            }
+        }
+        
+        // Display playlists in grid
+        function displayPlaylists(playlists) {
+            const container = document.getElementById('playlistsContainer');
+            container.innerHTML = '';
+            
+            if (playlists.length === 0) {
+                container.innerHTML = '<div class="status info">No public playlists found. Create one!</div>';
+                return;
+            }
+            
+            playlists.forEach(playlist => {
+                const playlistCard = document.createElement('div');
+                playlistCard.className = 'playlist-card';
+                playlistCard.innerHTML = `
+                    <h3>${playlist.name}</h3>
+                    <p>${playlist.description || 'No description'}</p>
+                    <div class="playlist-meta">
+                        <span>${playlist.formattedCreatedAt || 'Recent'}</span>
+                        <span>🎵 ${playlist.songCount || 0} songs</span>
+                    </div>
+                    <div class="playlist-actions">
+                        <button onclick="viewPlaylist(${playlist.id})" class="secondary">View</button>
+                        <button onclick="playPlaylist(${playlist.id})" class="secondary">▶️ Play</button>
+                    </div>
+                `;
+                
+                container.appendChild(playlistCard);
+            });
+        }
+        
+        // View playlist details
+        async function viewPlaylist(playlistId) {
+            try {
+                showStatus('Loading playlist details...', 'info', 'createStatus');
+                
+                // Get playlist details
+                const response = await fetch(`/api/playlists/${playlistId}`);
+                const result = await response.json();
+                
+                if (result.success) {
+                    const playlist = result.data;
+                    currentPlaylistId = playlistId;
+                    
+                    // Update modal content
+                    document.getElementById('modalTitle').textContent = playlist.name;
+                    document.getElementById('modalDescription').textContent = playlist.description || 'No description';
+                    document.getElementById('modalMeta').textContent = `Created: ${playlist.formattedCreatedAt || 'Unknown'}`;
+                    document.getElementById('modalSongsCount').textContent = `Songs: ${playlist.songCount || 0}`;
+                    
+                    // Display songs
+                    displayPlaylistSongs(playlist.songs || []);
+                    
+                    // Show modal
+                    document.getElementById('playlistModal').style.display = 'block';
+                    
+                    showStatus('✅ Playlist loaded', 'success', 'createStatus');
+                } else {
+                    showStatus(`❌ Error: ${result.message}`, 'error', 'createStatus');
+                }
+            } catch (error) {
+                showStatus(`❌ Error: ${error.message}`, 'error', 'createStatus');
+            }
+        }
+        
+        // Display songs in playlist modal
+        function displayPlaylistSongs(songs) {
+            const container = document.getElementById('playlistSongs');
+            container.innerHTML = '';
+            
+            if (songs.length === 0) {
+                container.innerHTML = '<div class="status info">No songs in this playlist yet</div>';
+                return;
+            }
+            
+            songs.forEach(song => {
+                const songItem = document.createElement('div');
+                songItem.className = 'song-item';
+                songItem.innerHTML = `
+                    <div class="song-info">
+                        <h4>${song.title}</h4>
+                        <p>${song.artist} • ${song.album || 'Unknown'} • ${song.formattedDuration}</p>
+                    </div>
+                    <div class="song-actions">
+                        <button onclick="playSong('${song.audioFilePath || song.filePath}')" class="secondary">▶️</button>
+                        <button onclick="removeFromPlaylist(${song.id})" class="danger">🗑️</button>
+                    </div>
+                `;
+                container.appendChild(songItem);
+            });
+        }
+        
+        // Play a specific song
+        function playSong(filePath) {
+            if (filePath) {
+                // Open audio test page and play the song
+                window.open(`/audio-test.html?play=${encodeURIComponent(filePath)}`, '_blank');
+            } else {
+                showStatus('No audio file available for this song', 'error', 'createStatus');
+            }
+        }
+        
+        // Play entire playlist
+        async function playPlaylist(playlistId) {
+            if (!playlistId && currentPlaylistId) {
+                playlistId = currentPlaylistId;
+            }
+            
+            if (!playlistId) {
+                showStatus('No playlist selected', 'error', 'createStatus');
+                return;
+            }
+            
+            try {
+                const response = await fetch(`/api/playlists/${playlistId}/songs`);
+                const result = await response.json();
+                
+                if (result.success && result.data.length > 0) {
+                    // Get first song with audio file
+                    const songWithAudio = result.data.find(song => song.audioFilePath);
+                    if (songWithAudio) {
+                        window.open(`/audio-test.html?play=${encodeURIComponent(songWithAudio.audioFilePath)}`, '_blank');
+                        showStatus('Opening playlist in player...', 'success', 'createStatus');
+                    } else {
+                        showStatus('No songs with audio files in this playlist', 'error', 'createStatus');
+                    }
+                } else {
+                    showStatus('No songs in this playlist', 'error', 'createStatus');
+                }
+            } catch (error) {
+                showStatus(`Error: ${error.message}`, 'error', 'createStatus');
+            }
+        }
+        
+        // Remove song from playlist
+        async function removeFromPlaylist(songId) {
+            if (!currentPlaylistId) {
+                showStatus('No playlist selected', 'error', 'createStatus');
+                return;
+            }
+            
+            if (!confirm('Remove this song from playlist?')) {
+                return;
+            }
+            
+            try {
+                const response = await fetch(`/api/playlists/${currentPlaylistId}/songs/${songId}`, {
+                    method: 'DELETE'
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showStatus('✅ Song removed from playlist', 'success', 'createStatus');
+                    // Refresh playlist view
+                    viewPlaylist(currentPlaylistId);
+                } else {
+                    showStatus(`❌ Error: ${result.message}`, 'error', 'createStatus');
+                }
+            } catch (error) {
+                showStatus(`❌ Error: ${error.message}`, 'error', 'createStatus');
+            }
+        }
+        
+        // Delete playlist
+        async function deletePlaylist() {
+            if (!currentPlaylistId) {
+                showStatus('No playlist selected', 'error', 'createStatus');
+                return;
+            }
+            
+            if (!confirm('Are you sure you want to delete this playlist?')) {
+                return;
+            }
+            
+            try {
+                const response = await fetch(`/api/playlists/${currentPlaylistId}`, {
+                    method: 'DELETE'
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showStatus('✅ Playlist deleted successfully', 'success', 'createStatus');
+                    closeModal();
+                    loadPlaylists();
+                } else {
+                    showStatus(`❌ Error: ${result.message}`, 'error', 'createStatus');
+                }
+            } catch (error) {
+                showStatus(`❌ Error: ${error.message}`, 'error', 'createStatus');
+            }
+        }
+        
+        // Close modal
+        function closeModal() {
+            document.getElementById('playlistModal').style.display = 'none';
+            currentPlaylistId = null;
+        }
+        
+        // Status display helper
+        function showStatus(message, type, elementId = 'createStatus') {
+            const statusDiv = document.getElementById(elementId);
+            statusDiv.textContent = message;
+            statusDiv.className = 'status ' + type;
+            
+            // Auto-clear success messages after 5 seconds
+            if (type === 'success') {
+                setTimeout(() => {
+                    if (statusDiv.textContent === message) {
+                        statusDiv.textContent = '';
+                        statusDiv.className = 'status';
+                    }
+                }, 5000);
+            }
+        }
+    </script>
+</body>
+</html>
