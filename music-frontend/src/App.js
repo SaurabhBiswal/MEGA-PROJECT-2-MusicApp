@@ -1,18 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { searchSongs, getRecentSongs } from './api';
-import { Play, Search, Music, Disc, Plus, Home, Heart } from 'lucide-react';
+import { Play, Search, Music, Disc, Plus, Home, Heart, User } from 'lucide-react';
 
 function App() {
   const [query, setQuery] = useState('');
   const [songs, setSongs] = useState([]);
   const [currentSong, setCurrentSong] = useState(null);
-  const [view, setView] = useState('home'); // Views: 'home', 'search', 'library'
+  const [view, setView] = useState('home');
+
+  // --- LOGIN STATES ---
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [loggedInUser, setLoggedInUser] = useState(null);
+  const [authForm, setAuthForm] = useState({ username: '', password: '' });
 
   useEffect(() => {
     loadFeatured();
   }, []);
 
-  // Home Page ke liye trending gaane
   const loadFeatured = async () => {
     try {
       const res = await getRecentSongs();
@@ -21,7 +25,6 @@ function App() {
     } catch (e) { console.log("Recent songs load nahi huye"); }
   };
 
-  // Search logic
   const handleSearch = async () => {
     if(!query) return;
     const res = await searchSongs(query);
@@ -29,18 +32,12 @@ function App() {
     setView('search');
   };
 
-  // DATABASE se saved gaane lana (Day 12)
   const loadLibrary = async () => {
     try {
-        // Hum Playlist ID 1 mangwa rahe hain kyunki usi mein 5 gaane hain
         const response = await fetch(`http://localhost:8080/api/playlists/1`);
         const result = await response.json();
-        
-        console.log("Backend Se Data Aaya:", result);
-
-        // DHAYAN SE: Tere JSON mein data.songs ke andar gaane hain
         if (result.status === "success" && result.data && result.data.songs) {
-            setSongs(result.data.songs); // Yahan fix hai!
+            setSongs(result.data.songs);
             setView('library');
         } else {
             setSongs([]);
@@ -48,25 +45,50 @@ function App() {
             alert("Bhai, ye playlist toh khali nikli!");
         }
     } catch (error) {
-        console.error("Library load error:", error);
         alert("Backend se baat nahi ho pa rahi!");
     }
-};
+  };
 
-  const playSong = (song) => {
-    if (!song.audioUrl) {
-        alert("Bhai, is gaane ka audio link database mein nahi hai!");
-        return;
-    }
-    setCurrentSong(song);
-    const audio = document.querySelector('audio');
-    if (audio) {
-        audio.src = song.audioUrl;
-        audio.load();
-        audio.play().catch(e => console.error("Playback failed:", e));
+  // --- LOGIN LOGIC ---
+  const handleLogin = async () => {
+    try {
+        const response = await fetch('http://localhost:8080/api/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                usernameOrEmail: authForm.username, 
+                password: authForm.password
+            })
+        });
+
+        const result = await response.json();
+
+        if (response.ok && (result.status === "success" || result.success)) {
+            setLoggedInUser(result.data); 
+            setIsLoginOpen(false);
+            alert("Swaagat hai, " + (result.data?.username || "Admin") + "!");
+        } else {
+            alert("Lafda: " + (result.message || "Invalid Credentials"));
+        }
+    } catch (error) {
+        alert("Backend band hai shayad!");
     }
   };
+
+  const playSong = (song) => {
+    if (!song.audioUrl) return alert("Audio link nahi hai!");
+    setCurrentSong(song);
+    const audio = document.querySelector('audio');
+    if (audio) { audio.src = song.audioUrl; audio.load(); audio.play(); }
+  };
+
   const addToPlaylist = async (song) => {
+    if (!loggedInUser) {
+        alert("Bhai, pehle login toh kar lo!");
+        setIsLoginOpen(true); 
+        return;
+    }
+
     try {
         const response = await fetch(`http://localhost:8080/api/playlists/1/songs`, {
             method: 'POST',
@@ -76,15 +98,13 @@ function App() {
         
         if(response.ok) {
             alert(`✅ ${song.title} Library mein add ho gaya!`);
-            // AGAR TU LIBRARY VIEW MEIN HAI, TOH TURANT REFRESH KARO
-            if (view === 'library') {
-                loadLibrary(); 
-            }
+            if (view === 'library') loadLibrary(); 
         }
-    } catch (error) {
-        console.error("Add error:", error);
+    } catch (error) { 
+        alert("Gaana add nahi ho paya!");
     }
-};
+  };
+
   return (
     <div style={styles.container}>
       {/* Sidebar */}
@@ -100,6 +120,28 @@ function App() {
           <div style={{...styles.navItem, color: view === 'library' ? '#1DB954' : 'white'}} onClick={loadLibrary}>
             <Heart size={22}/> Your Library
           </div>
+          
+          <hr style={{borderColor: '#282828', margin: '20px 0'}} />
+          
+          {/* LOGIN/USER SECTION WITH LOGOUT */}
+          {!loggedInUser ? (
+            <div style={styles.navItem} onClick={() => setIsLoginOpen(true)}>
+              <User size={22}/> Login / Register
+            </div>
+          ) : (
+            <div>
+              <div style={{...styles.navItem, color: '#1DB954', marginBottom: '5px'}}>
+                <User size={22}/> Hi, {loggedInUser.username}
+              </div>
+              <div style={{...styles.navItem, color: '#b3b3b3', marginLeft: '37px', fontSize: '14px', cursor: 'pointer'}} 
+                   onClick={() => {
+                     setLoggedInUser(null);
+                     alert("Alvida! Phir milenge.");
+                   }}>
+                Logout
+              </div>
+            </div>
+          )}
         </nav>
       </div>
 
@@ -139,6 +181,33 @@ function App() {
         </div>
       </div>
 
+      {/* LOGIN MODAL */}
+      {isLoginOpen && (
+        <div style={styles.modalOverlay}>
+          <div style={styles.loginBox}>
+            <h2 style={{color: '#1DB954', marginBottom: '20px'}}>MusicApp Login</h2>
+            <input 
+              style={styles.loginInput} 
+              placeholder="Username or Email" 
+              onChange={(e) => setAuthForm({...authForm, username: e.target.value})}
+            />
+            <input 
+              style={styles.loginInput} 
+              type="password" 
+              placeholder="Password" 
+              onChange={(e) => setAuthForm({...authForm, password: e.target.value})}
+            />
+            <button style={styles.loginSubmit} onClick={handleLogin}>
+              Login
+            </button>
+            <button style={{background:'transparent', color:'#b3b3b3', border:'none', marginTop:'15px', cursor:'pointer'}} 
+                    onClick={() => setIsLoginOpen(false)}>
+              Cancel
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Player Bar */}
       {currentSong && (
         <div style={styles.playerBar}>
@@ -174,7 +243,11 @@ const styles = {
   songTitle: { fontSize: '15px', fontWeight: 'bold', marginBottom: '5px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' },
   songArtist: { fontSize: '13px', color: '#b3b3b3' },
   addBtn: { position: 'absolute', top: '20px', right: '20px', backgroundColor: '#1DB954', border: 'none', borderRadius: '50%', width: '32px', height: '32px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' },
-  playerBar: { position: 'fixed', bottom: 0, left: 0, width: '100%', background: '#181818', padding: '15px 30px', borderTop: '1px solid #282828', display: 'flex', alignItems: 'center', justifyContent: 'space-between', zIndex: 100 }
+  playerBar: { position: 'fixed', bottom: 0, left: 0, width: '100%', background: '#181818', padding: '15px 30px', borderTop: '1px solid #282828', display: 'flex', alignItems: 'center', justifyContent: 'space-between', zIndex: 100 },
+  modalOverlay: { position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', backgroundColor: 'rgba(0,0,0,0.9)', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 2000 },
+  loginBox: { backgroundColor: '#282828', padding: '40px', borderRadius: '8px', width: '100%', maxWidth: '400px', display: 'flex', flexDirection: 'column' },
+  loginInput: { padding: '14px', marginBottom: '15px', borderRadius: '4px', border: 'none', backgroundColor: '#3e3e3e', color: 'white', fontSize: '16px' },
+  loginSubmit: { backgroundColor: '#1DB954', color: 'white', padding: '14px', border: 'none', borderRadius: '30px', fontWeight: 'bold', cursor: 'pointer', fontSize: '16px', marginTop: '10px' }
 };
 
 export default App;

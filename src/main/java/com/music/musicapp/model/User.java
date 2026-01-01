@@ -8,6 +8,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "users")
 @Data
@@ -50,10 +52,12 @@ public class User {
     private LocalDateTime lastLogin;
     
     // User's owned playlists
+    @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Playlist> ownedPlaylists = new ArrayList<>();
     
     // Playlists the user follows
+    @JsonIgnore
     @ManyToMany
     @JoinTable(
         name = "user_followed_playlists",
@@ -63,6 +67,7 @@ public class User {
     private List<Playlist> followedPlaylists = new ArrayList<>();
     
     // Users who follow this user
+    @JsonIgnore
     @ManyToMany
     @JoinTable(
         name = "user_followers",
@@ -72,6 +77,7 @@ public class User {
     private List<User> followers = new ArrayList<>();
     
     // Users this user is following
+    @JsonIgnore
     @ManyToMany
     @JoinTable(
         name = "user_following", 
@@ -81,10 +87,12 @@ public class User {
     private List<User> following = new ArrayList<>();
     
     // User's ratings
+    @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Rating> ratings = new ArrayList<>();
     
     // User's play history
+    @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<PlayHistory> playHistory = new ArrayList<>();
     

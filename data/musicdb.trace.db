@@ -20,3 +20,9 @@ Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection wa
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:690)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
 	... 16 more
+2026-01-02 03:36:46.241436+05:30 jdbc[21]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PLAYLIST" not found; SQL statement:
+DELETE FROM PLAYLIST WHERE ID > 3 [42102-232]
+2026-01-02 03:37:14.559820+05:30 jdbc[21]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PLAYLIST" not found; SQL statement:
+DELETE FROM PLAYLIST WHERE ID > 3 [42102-232]
