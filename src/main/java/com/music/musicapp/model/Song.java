@@ -24,6 +24,8 @@ public class Song {
     
     @Column(name = "genre")
     private String genre;
+    // --- YE FIELD MISSING THA ---
+    private String filePath; // Sirf filename store karega (e.g., "song.mp3")
     
     @Column(name = "duration") // in seconds
     private Integer duration;

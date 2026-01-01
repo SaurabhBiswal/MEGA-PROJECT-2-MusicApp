@@ -17,7 +17,47 @@
             color: white;
             min-height: 100vh;
         }
-        
+
+        /* --- MODAL (POPUP) STYLES --- */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .modal-content {
+            background-color: #282828;
+            margin: 10% auto;
+            padding: 30px;
+            border: 1px solid #333;
+            width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+            text-align: center;
+        }
+
+        .modal h2 { margin-bottom: 20px; color: white; }
+        .modal input {
+            width: 100%; padding: 10px; margin: 10px 0;
+            background: #3e3e3e; border: 1px solid #555;
+            color: white; border-radius: 5px;
+        }
+        .modal-btn {
+            background-color: #1db954; color: white;
+            padding: 10px 20px; border: none; border-radius: 20px;
+            cursor: pointer; font-weight: bold; width: 100%; margin-top: 10px;
+        }
+        .modal-btn:hover { background-color: #1ed760; }
+        .close-btn {
+            color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer;
+        }
+        .close-btn:hover { color: white; }
+
         /* Sidebar Navigation */
         .sidebar {
             width: 240px;
@@ -25,6 +65,8 @@
             height: 100vh;
             position: fixed;
             padding: 24px;
+            display: flex;
+            flex-direction: column;
         }
         
         .logo {
@@ -47,6 +89,7 @@
             border-radius: 4px;
             transition: all 0.3s;
             margin-bottom: 8px;
+            cursor: pointer;
         }
         
         .nav-item:hover, .nav-item.active {
@@ -54,9 +97,7 @@
             color: white;
         }
         
-        .nav-item i {
-            font-size: 20px;
-        }
+        .nav-item i { font-size: 20px; }
         
         /* Main Content */
         .main-content {
@@ -64,6 +105,7 @@
             padding: 30px;
             background: linear-gradient(180deg, #1f1f1f 0%, #121212 100%);
             min-height: 100vh;
+            padding-bottom: 100px; /* Space for player */
         }
         
         /* Header */
@@ -84,10 +126,7 @@
             font-size: 14px;
         }
         
-        .search-bar:focus {
-            outline: none;
-            background: #3a3a3a;
-        }
+        .search-bar:focus { outline: none; background: #3a3a3a; }
         
         .user-menu {
             background: #282828;
@@ -106,12 +145,9 @@
             margin-bottom: 40px;
         }
         
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
+        .hero h1 { font-size: 2.5rem; margin-bottom: 10px; }
         
-        /* Grid Layout for Songs */
+        /* Grid Layout */
         .music-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -144,22 +180,9 @@
             font-size: 40px;
         }
         
-        .song-title {
-            font-weight: bold;
-            margin-bottom: 5px;
-            font-size: 16px;
-        }
-        
-        .song-artist {
-            color: #b3b3b3;
-            font-size: 14px;
-            margin-bottom: 5px;
-        }
-        
-        .song-duration {
-            color: #b3b3b3;
-            font-size: 12px;
-        }
+        .song-title { font-weight: bold; margin-bottom: 5px; font-size: 16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .song-artist { color: #b3b3b3; font-size: 14px; margin-bottom: 5px; }
+        .song-duration { color: #b3b3b3; font-size: 12px; }
         
         /* Playlists Grid */
         .playlist-grid {
@@ -174,7 +197,6 @@
             border-radius: 8px;
             transition: all 0.3s;
             cursor: pointer;
-            position: relative;
         }
         
         .playlist-card:hover {
@@ -194,16 +216,8 @@
             font-size: 40px;
         }
         
-        .playlist-name {
-            font-weight: bold;
-            margin-bottom: 8px;
-            font-size: 18px;
-        }
-        
-        .playlist-info {
-            color: #b3b3b3;
-            font-size: 14px;
-        }
+        .playlist-name { font-weight: bold; margin-bottom: 8px; font-size: 18px; }
+        .playlist-info { color: #b3b3b3; font-size: 14px; }
         
         /* Now Playing Bar */
         .player-bar {
@@ -218,28 +232,12 @@
             align-items: center;
             justify-content: space-between;
             padding: 0 20px;
+            z-index: 500;
         }
         
-        .player-info {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            width: 300px;
-        }
-        
-        .player-controls {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            flex: 1;
-        }
-        
-        .control-buttons {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
+        .player-info { display: flex; align-items: center; gap: 15px; width: 300px; }
+        .player-controls { display: flex; flex-direction: column; align-items: center; gap: 10px; flex: 1; }
+        .control-buttons { display: flex; align-items: center; gap: 20px; }
         
         .control-btn {
             background: none;
@@ -252,9 +250,7 @@
             transition: all 0.3s;
         }
         
-        .control-btn:hover {
-            background: #282828;
-        }
+        .control-btn:hover { background: #282828; }
         
         .play-btn {
             background: white;
@@ -262,11 +258,12 @@
             width: 40px;
             height: 40px;
             font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
-        .play-btn:hover {
-            transform: scale(1.1);
-        }
+        .play-btn:hover { transform: scale(1.1); background: white; }
         
         .progress-bar {
             width: 100%;
@@ -280,7 +277,7 @@
             height: 100%;
             background: #1db954;
             border-radius: 2px;
-            width: 30%;
+            width: 0%;
         }
         
         .time-display {
@@ -299,46 +296,28 @@
             gap: 15px;
         }
         
-        .volume-slider {
-            width: 100px;
-        }
+        .volume-slider { width: 100px; }
         
         /* Responsive */
         @media (max-width: 768px) {
-            .sidebar {
-                width: 70px;
-                padding: 20px 10px;
-            }
-            
-            .nav-item span {
-                display: none;
-            }
-            
-            .main-content {
-                margin-left: 70px;
-            }
-            
-            .player-bar {
-                left: 70px;
-            }
-            
-            .search-bar {
-                width: 200px;
-            }
+            .sidebar { width: 70px; padding: 20px 10px; }
+            .nav-item span { display: none; }
+            .main-content { margin-left: 70px; }
+            .player-bar { left: 70px; }
+            .search-bar { width: 200px; }
+            .player-extra { display: none; }
         }
     </style>
-    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- Sidebar Navigation -->
     <div class="sidebar">
         <div class="logo">
             <i class="fas fa-music"></i>
             <span>MusicApp</span>
         </div>
         
-        <a href="/music-player.html" class="nav-item active">
+        <a href="#" class="nav-item active" onclick="location.reload()">
             <i class="fas fa-home"></i>
             <span>Home</span>
         </a>
@@ -348,17 +327,17 @@
             <span>Search</span>
         </a>
         
-        <a href="/playlist.html" class="nav-item">
-            <i class="fas fa-list"></i>
-            <span>Your Playlists</span>
+        <a href="#" class="nav-item" onclick="openModal('playlistModal')">
+            <i class="fas fa-plus-square"></i>
+            <span>Create Playlist</span>
         </a>
         
-        <a href="/audio-test.html" class="nav-item">
+        <a href="#" class="nav-item" onclick="openModal('uploadModal')">
             <i class="fas fa-upload"></i>
             <span>Upload Music</span>
         </a>
         
-        <div style="position: absolute; bottom: 30px; width: calc(100% - 48px);">
+        <div style="margin-top: auto;">
             <a href="/" class="nav-item" style="background: #282828;">
                 <i class="fas fa-external-link-alt"></i>
                 <span>Home Page</span>
@@ -366,9 +345,7 @@
         </div>
     </div>
     
-    <!-- Main Content -->
     <div class="main-content">
-        <!-- Header -->
         <div class="header">
             <div>
                 <button class="control-btn" onclick="window.history.back()">
@@ -387,63 +364,47 @@
             </div>
         </div>
         
-        <!-- Hero Section -->
         <div class="hero">
             <h1>Good Evening</h1>
             <p>Your personal music streaming service</p>
         </div>
         
-        <!-- Recently Played -->
         <h2 style="margin-bottom: 20px;">Recently Played</h2>
         <div id="recentSongs" class="music-grid">
-            <!-- Songs will be loaded here -->
+            <p style="color: #b3b3b3;">Loading songs...</p>
         </div>
         
-        <!-- Featured Playlists -->
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
             <h2>Featured Playlists</h2>
-            <a href="/playlist.html" style="color: #1db954; text-decoration: none;">Show all</a>
+            <a href="#" onclick="loadFeaturedPlaylists()" style="color: #1db954; text-decoration: none;">Refresh</a>
         </div>
         <div id="featuredPlaylists" class="playlist-grid">
-            <!-- Playlists will be loaded here -->
+            <p style="color: #b3b3b3;">Loading playlists...</p>
         </div>
         
-        <!-- Top Songs -->
         <h2 style="margin-top: 40px; margin-bottom: 20px;">Top Songs This Week</h2>
         <div id="topSongs" class="music-grid">
-            <!-- Top songs will be loaded here -->
-        </div>
+            </div>
     </div>
     
-    <!-- Now Playing Bar -->
     <div class="player-bar">
         <div class="player-info">
-            <div class="album-art" style="width: 56px; height: 56px;">
+            <div class="album-art" style="width: 56px; height: 56px; font-size: 24px;">
                 <i class="fas fa-music"></i>
             </div>
             <div>
                 <div class="song-title" id="nowPlayingTitle">Not Playing</div>
-                <div class="song-artist" id="nowPlayingArtist">Select a song to play</div>
+                <div class="song-artist" id="nowPlayingArtist">Select a song</div>
             </div>
         </div>
         
         <div class="player-controls">
             <div class="control-buttons">
-                <button class="control-btn" id="shuffleBtn">
-                    <i class="fas fa-random"></i>
-                </button>
-                <button class="control-btn" id="prevBtn">
-                    <i class="fas fa-step-backward"></i>
-                </button>
-                <button class="control-btn play-btn" id="playPauseBtn">
-                    <i class="fas fa-play"></i>
-                </button>
-                <button class="control-btn" id="nextBtn">
-                    <i class="fas fa-step-forward"></i>
-                </button>
-                <button class="control-btn" id="repeatBtn">
-                    <i class="fas fa-redo"></i>
-                </button>
+                <button class="control-btn" id="shuffleBtn"><i class="fas fa-random"></i></button>
+                <button class="control-btn" id="prevBtn"><i class="fas fa-step-backward"></i></button>
+                <button class="control-btn play-btn" id="playPauseBtn"><i class="fas fa-play"></i></button>
+                <button class="control-btn" id="nextBtn"><i class="fas fa-step-forward"></i></button>
+                <button class="control-btn" id="repeatBtn"><i class="fas fa-redo"></i></button>
             </div>
             
             <div style="width: 100%; max-width: 600px;">
@@ -458,17 +419,33 @@
         </div>
         
         <div class="player-extra">
-            <button class="control-btn" id="queueBtn">
-                <i class="fas fa-list-ol"></i>
-            </button>
-            <button class="control-btn" id="volumeBtn">
-                <i class="fas fa-volume-up"></i>
-            </button>
+            <button class="control-btn"><i class="fas fa-list-ol"></i></button>
+            <button class="control-btn"><i class="fas fa-volume-up"></i></button>
             <input type="range" class="volume-slider" min="0" max="100" value="70" id="volumeSlider">
         </div>
     </div>
 
-    <!-- Hidden Audio Player -->
+    <div id="uploadModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('uploadModal')">&times;</span>
+            <h2>Upload Song</h2>
+            <input type="text" id="upTitle" placeholder="Song Title" required>
+            <input type="text" id="upArtist" placeholder="Artist Name" required>
+            <input type="text" id="upAlbum" placeholder="Album Name">
+            <input type="file" id="upFile" accept=".mp3" required>
+            <button class="modal-btn" onclick="uploadSong()">Upload Now</button>
+        </div>
+    </div>
+
+    <div id="playlistModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('playlistModal')">&times;</span>
+            <h2>New Playlist</h2>
+            <input type="text" id="newPlaylistName" placeholder="Playlist Name (e.g., Gym Mix)" required>
+            <button class="modal-btn" onclick="createPlaylist()">Create</button>
+        </div>
+    </div>
+
     <audio id="audioPlayer" style="display: none;"></audio>
 
     <script>
@@ -485,147 +462,196 @@
             loadTopSongs();
             setupEventListeners();
         };
+
+        // --- MODAL FUNCTIONS ---
+        function openModal(id) { document.getElementById(id).style.display = 'block'; }
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+        window.onclick = function(e) { 
+            if(e.target.classList.contains('modal')) e.target.style.display = 'none'; 
+        }
+
+        // --- API & DATA LOADING ---
         
-        // Load recent songs
         async function loadRecentSongs() {
             try {
                 const response = await fetch('/api/songs/recent?limit=6');
                 const result = await response.json();
-                
                 if (result.success) {
                     songs = result.data;
                     displaySongs(result.data.slice(0, 6), 'recentSongs');
                 }
             } catch (error) {
                 console.error('Error loading songs:', error);
-                document.getElementById('recentSongs').innerHTML = 
-                    '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #b3b3b3;">' +
-                    '<i class="fas fa-music" style="font-size: 40px; margin-bottom: 10px;"></i><br>' +
-                    'No songs found. Upload some music first!' +
-                    '</div>';
+                document.getElementById('recentSongs').innerHTML = '<p style="color:#b3b3b3; padding:20px;">No songs found. Use "Upload Music" to add some!</p>';
             }
         }
         
-        // Load featured playlists
         async function loadFeaturedPlaylists() {
             try {
                 const response = await fetch('/api/playlists');
                 const result = await response.json();
-                
                 if (result.success) {
                     playlists = result.data;
                     displayPlaylists(result.data.slice(0, 4), 'featuredPlaylists');
                 }
             } catch (error) {
                 console.error('Error loading playlists:', error);
-                document.getElementById('featuredPlaylists').innerHTML = 
-                    '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #b3b3b3;">' +
-                    '<i class="fas fa-list-music" style="font-size: 40px; margin-bottom: 10px;"></i><br>' +
-                    'No playlists found. Create one!' +
-                    '</div>';
+                document.getElementById('featuredPlaylists').innerHTML = '<p style="color:#b3b3b3; padding:20px;">No playlists found.</p>';
             }
         }
-        
-        // Load top songs
+
         async function loadTopSongs() {
             try {
                 const response = await fetch('/api/songs');
                 const result = await response.json();
+                if (result.success) displaySongs(result.data.slice(0, 8), 'topSongs');
+            } catch (error) { console.error(error); }
+        }
+
+        // --- UPLOAD LOGIC ---
+        async function uploadSong() {
+            const title = document.getElementById('upTitle').value;
+            const artist = document.getElementById('upArtist').value;
+            const album = document.getElementById('upAlbum').value;
+            const fileInput = document.getElementById('upFile');
+
+            if(fileInput.files.length === 0 || !title || !artist) {
+                alert("Please fill all fields!");
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append("title", title);
+            formData.append("artist", artist);
+            formData.append("album", album);
+            formData.append("genre", "Pop"); 
+            formData.append("file", fileInput.files[0]);
+
+            try {
+                document.querySelector('#uploadModal .modal-btn').innerText = "Uploading...";
+                const response = await fetch('/api/songs/upload', { method: 'POST', body: formData });
+                const result = await response.json();
                 
                 if (result.success) {
-                    displaySongs(result.data.slice(0, 8), 'topSongs');
+                    alert("Song Uploaded Successfully!");
+                    closeModal('uploadModal');
+                    loadRecentSongs(); 
+                    // Clear inputs
+                    document.getElementById('upTitle').value = "";
+                    document.getElementById('upFile').value = "";
+                    document.querySelector('#uploadModal .modal-btn').innerText = "Upload Now";
+                } else {
+                    alert("Upload Failed: " + (result.message || "Unknown error"));
+                    document.querySelector('#uploadModal .modal-btn').innerText = "Upload Now";
                 }
             } catch (error) {
-                console.error('Error loading top songs:', error);
+                alert("Server Error during upload.");
+                document.querySelector('#uploadModal .modal-btn').innerText = "Upload Now";
             }
         }
+
+        // --- PLAYLIST LOGIC ---
+        async function createPlaylist() {
+            const name = document.getElementById('newPlaylistName').value;
+            if(!name) { alert("Enter a name!"); return; }
+
+            try {
+                const response = await fetch(`/api/playlists/create?name=${encodeURIComponent(name)}`, { method: 'POST' });
+                const result = await response.json();
+                if(result.success) {
+                    alert("Playlist Created!");
+                    closeModal('playlistModal');
+                    loadFeaturedPlaylists();
+                    document.getElementById('newPlaylistName').value = "";
+                }
+            } catch (error) { console.error(error); }
+        }
+
+        async function openPlaylist(playlistId, playlistName) {
+            try {
+                const response = await fetch(`/api/playlists/${playlistId}/songs`);
+                const result = await response.json();
+
+                if (result.success) {
+                    // Update UI to show playlist content
+                    document.querySelector('.hero h1').textContent = playlistName;
+                    document.querySelector('.hero p').textContent = "Custom Playlist";
+                    document.getElementById('featuredPlaylists').style.display = 'none';
+                    document.querySelector('h2').textContent = "Songs in this Playlist";
+                    
+                    songs = result.data; 
+                    displaySongs(songs, 'recentSongs');
+                }
+            } catch (error) { console.error("Error opening playlist:", error); }
+        }
         
-        // Display songs in grid
-        function displaySongs(songs, containerId) {
+        // --- DISPLAY FUNCTIONS ---
+        function displaySongs(songsList, containerId) {
             const container = document.getElementById(containerId);
             container.innerHTML = '';
             
-            if (songs.length === 0) {
-                container.innerHTML = 
-                    '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #b3b3b3;">' +
-                    '<i class="fas fa-music" style="font-size: 40px; margin-bottom: 10px;"></i><br>' +
-                    'No songs available' +
-                    '</div>';
+            if (songsList.length === 0) {
+                container.innerHTML = '<p style="color:#b3b3b3; padding:20px;">No songs available.</p>';
                 return;
             }
             
-            songs.forEach((song, index) => {
+            songsList.forEach((song, index) => {
                 const songCard = document.createElement('div');
                 songCard.className = 'song-card';
                 songCard.innerHTML = `
-                    <div class="album-art">
-                        <i class="fas fa-music"></i>
-                    </div>
-                    <div class="song-title">${song.title}</div>
+                    <div class="album-art"><i class="fas fa-music"></i></div>
+                    <div class="song-title" title="${song.title}">${song.title}</div>
                     <div class="song-artist">${song.artist}</div>
-                    <div class="song-duration">${song.formattedDuration || '0:00'}</div>
                 `;
-                
                 songCard.onclick = () => playSong(song, index);
                 container.appendChild(songCard);
             });
         }
         
-        // Display playlists in grid
-        function displayPlaylists(playlists, containerId) {
+        function displayPlaylists(playlistsList, containerId) {
             const container = document.getElementById(containerId);
             container.innerHTML = '';
             
-            if (playlists.length === 0) {
-                container.innerHTML = 
-                    '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #b3b3b3;">' +
-                    '<i class="fas fa-list-music" style="font-size: 40px; margin-bottom: 10px;"></i><br>' +
-                    'No playlists available' +
-                    '</div>';
+            if (playlistsList.length === 0) {
+                container.innerHTML = '<p style="color:#b3b3b3; padding:20px;">No playlists found.</p>';
                 return;
             }
             
-            playlists.forEach(playlist => {
+            playlistsList.forEach(playlist => {
                 const playlistCard = document.createElement('div');
                 playlistCard.className = 'playlist-card';
                 playlistCard.innerHTML = `
-                    <div class="playlist-image">
-                        <i class="fas fa-list-music"></i>
-                    </div>
+                    <div class="playlist-image"><i class="fas fa-list-music"></i></div>
                     <div class="playlist-name">${playlist.name}</div>
-                    <div class="playlist-info">${playlist.songCount || 0} songs</div>
+                    <div class="playlist-info">${playlist.songs ? playlist.songs.length : 0} songs</div>
                 `;
-                
-                playlistCard.onclick = () => {
-                    window.location.href = `/playlist.html?playlist=${playlist.id}`;
-                };
+                playlistCard.onclick = () => openPlaylist(playlist.id, playlist.name);
                 container.appendChild(playlistCard);
             });
         }
         
-        // Play a song
+        // --- PLAYER FUNCTIONS ---
         function playSong(song, index) {
-            if (song.audioFilePath) {
+            const filename = song.audioUrl || song.audioFilePath; 
+
+            if (filename) {
                 const audioPlayer = document.getElementById('audioPlayer');
-                audioPlayer.src = `/api/stream/audio/${song.audioFilePath}`;
-                audioPlayer.play();
+                // Correct Endpoint
+                audioPlayer.src = `/api/songs/play/${filename}`; 
+                audioPlayer.play().catch(e => console.error("Playback error:", e));
                 
-                // Update now playing info
+                // Update UI
                 document.getElementById('nowPlayingTitle').textContent = song.title;
                 document.getElementById('nowPlayingArtist').textContent = song.artist;
-                
-                // Update play button
                 document.getElementById('playPauseBtn').innerHTML = '<i class="fas fa-pause"></i>';
                 
                 currentSong = song;
                 currentSongIndex = index;
             } else {
-                alert('This song has no audio file available. Please upload an MP3 file first.');
-                window.location.href = '/audio-test.html';
+                alert('Audio file not found for this song!');
             }
         }
         
-        // Setup event listeners
         function setupEventListeners() {
             const audioPlayer = document.getElementById('audioPlayer');
             const playPauseBtn = document.getElementById('playPauseBtn');
@@ -633,42 +659,26 @@
             const progress = document.getElementById('progress');
             const volumeSlider = document.getElementById('volumeSlider');
             
-            // Play/Pause button
             playPauseBtn.onclick = () => {
                 if (audioPlayer.paused) {
-                    if (!audioPlayer.src) {
-                        if (songs.length > 0) {
-                            playSong(songs[0], 0);
-                        } else {
-                            alert('No songs available. Please upload some music first.');
-                            window.location.href = '/audio-test.html';
-                        }
-                    } else {
-                        audioPlayer.play();
-                        playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                    }
+                    if (!audioPlayer.src && songs.length > 0) playSong(songs[0], 0);
+                    else audioPlayer.play();
+                    playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
                 } else {
                     audioPlayer.pause();
                     playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
                 }
             };
             
-            // Update time display
             audioPlayer.ontimeupdate = () => {
-                const currentTime = formatTime(audioPlayer.currentTime);
-                const totalTime = formatTime(audioPlayer.duration);
-                
-                document.getElementById('currentTime').textContent = currentTime;
-                document.getElementById('totalTime').textContent = totalTime;
-                
-                // Update progress bar
+                document.getElementById('currentTime').textContent = formatTime(audioPlayer.currentTime);
+                document.getElementById('totalTime').textContent = formatTime(audioPlayer.duration);
                 if (audioPlayer.duration) {
-                    const progressPercent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
-                    progress.style.width = `${progressPercent}%`;
+                    const pct = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+                    progress.style.width = `${pct}%`;
                 }
             };
             
-            // Click on progress bar to seek
             progressBar.onclick = (e) => {
                 if (audioPlayer.duration) {
                     const rect = progressBar.getBoundingClientRect();
@@ -677,62 +687,44 @@
                 }
             };
             
-            // Volume control
-            volumeSlider.oninput = () => {
-                audioPlayer.volume = volumeSlider.value / 100;
-            };
+            volumeSlider.oninput = () => { audioPlayer.volume = volumeSlider.value / 100; };
             
-            // When song ends
             audioPlayer.onended = () => {
                 playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
-                // Auto-play next song if available
+                // Auto play next
                 if (songs.length > 0 && currentSongIndex < songs.length - 1) {
-                    setTimeout(() => {
-                        playSong(songs[currentSongIndex + 1], currentSongIndex + 1);
-                    }, 1000);
+                     // Small delay for smooth transition
+                    setTimeout(() => playSong(songs[currentSongIndex + 1], currentSongIndex + 1), 1000);
                 }
             };
             
-            // Next/Previous buttons
+            // Next/Prev
             document.getElementById('nextBtn').onclick = () => {
-                if (songs.length > 0 && currentSongIndex < songs.length - 1) {
+                if (songs.length > 0 && currentSongIndex < songs.length - 1) 
                     playSong(songs[currentSongIndex + 1], currentSongIndex + 1);
-                }
             };
-            
             document.getElementById('prevBtn').onclick = () => {
-                if (songs.length > 0 && currentSongIndex > 0) {
+                if (songs.length > 0 && currentSongIndex > 0) 
                     playSong(songs[currentSongIndex - 1], currentSongIndex - 1);
-                }
             };
             
-            // Search functionality
+            // Search
             document.getElementById('searchInput').addEventListener('input', async function(e) {
                 const query = e.target.value.trim();
-                
                 if (query.length > 2) {
                     try {
                         const response = await fetch(`/api/songs/search/title?title=${encodeURIComponent(query)}`);
                         const result = await response.json();
-                        
-                        if (result.success && result.data.length > 0) {
-                            displaySongs(result.data, 'recentSongs');
-                        } else {
-                            displaySongs([], 'recentSongs');
-                        }
-                    } catch (error) {
-                        console.error('Search error:', error);
-                    }
+                        if (result.success) displaySongs(result.data, 'recentSongs');
+                    } catch (error) { console.error(error); }
                 } else if (query.length === 0) {
                     loadRecentSongs();
                 }
             });
         }
         
-        // Format time (seconds to MM:SS)
         function formatTime(seconds) {
             if (isNaN(seconds)) return '0:00';
-            
             const mins = Math.floor(seconds / 60);
             const secs = Math.floor(seconds % 60);
             return `${mins}:${secs.toString().padStart(2, '0')}`;

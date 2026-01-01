@@ -1,21 +1,39 @@
 package com.music.musicapp.controller;
-
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
+import org.springframework.http.MediaType;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import com.music.musicapp.dto.ApiResponse;
 import com.music.musicapp.dto.SongDTO;
 import com.music.musicapp.service.SongService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.multipart.MultipartFile;
+import java.io.IOException;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/songs")
+@CrossOrigin(origins = "*")
 public class SongController {
     
     @Autowired
     private SongService songService;
-    
+    // FIX: Upload Endpoint jo missing tha
+ @PostMapping("/upload")
+    public ResponseEntity<ApiResponse> uploadSong(
+            @RequestParam("title") String title,
+            @RequestParam("artist") String artist,
+            @RequestParam("file") MultipartFile file) {
+        try {
+            SongDTO savedSong = songService.saveSong(title, artist, "Unknown", file);
+            return ResponseEntity.ok(ApiResponse.success("Song uploaded", savedSong));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(ApiResponse.error(e.getMessage()));
+        }
+    }
     // Get all songs
     @GetMapping
     public ResponseEntity<ApiResponse> getAllSongs() {
@@ -76,7 +94,26 @@ public class SongController {
             ApiResponse.success("Recent songs (limit: " + limit + ")", songs)
         );
     }
-    
+    // ==========================================
+    // STREAMING ENDPOINT (Gaana Bajane Ke Liye)
+    // ==========================================
+    @GetMapping("/play/{filename}")
+    public ResponseEntity<Resource> playAudio(@PathVariable String filename) {
+        try {
+            Path filePath = Paths.get("uploads/audio").resolve(filename).normalize();
+            Resource resource = new UrlResource(filePath.toUri());
+
+            if (resource.exists()) {
+                return ResponseEntity.ok()
+                        .contentType(MediaType.parseMediaType("audio/mpeg"))
+                        .body(resource);
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
     // NEW ENDPOINT: Update song audio file path
     @PutMapping("/{id}/audio")
     public ResponseEntity<ApiResponse> updateSongAudio(
@@ -117,4 +154,13 @@ public class SongController {
             ApiResponse.success("Featured songs", songs)
         );
     }
+    @GetMapping("/search/external")
+public ResponseEntity<ApiResponse> searchExternal(@RequestParam String query) {
+    try {
+        List<SongDTO> songs = songService.searchExternalSongs(query);
+        return ResponseEntity.ok(ApiResponse.success("External songs found", songs));
+    } catch (Exception e) {
+        return ResponseEntity.badRequest().body(ApiResponse.error(e.getMessage()));
+    }
+}
 }

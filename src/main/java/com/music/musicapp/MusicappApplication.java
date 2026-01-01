@@ -11,5 +11,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 public class MusicappApplication {
     public static void main(String[] args) {
         SpringApplication.run(MusicappApplication.class, args);
+        System.out.println("🎵 MUSIC APP IS RUNNING... TRUST THE PROCESS! 🚀");
     }
 }

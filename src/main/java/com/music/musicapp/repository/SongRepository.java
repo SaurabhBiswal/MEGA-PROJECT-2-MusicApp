@@ -40,5 +40,5 @@ public interface SongRepository extends JpaRepository<Song, Long> {
     List<Song> findTopSongs();
     
     @Query("SELECT s FROM Song s WHERE s.averageRating >= :minRating ORDER BY s.averageRating DESC")
-    List<Song> findByMinRating(@Param("minRating") Float minRating);
+    List<Song> findByMinRating(@Param("minRating") Double minRating);
 }

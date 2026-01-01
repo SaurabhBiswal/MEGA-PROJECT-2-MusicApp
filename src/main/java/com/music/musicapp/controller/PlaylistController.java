@@ -13,11 +13,45 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/playlists")
+@CrossOrigin(origins = "*") // FIX: Browser blocking hatane ke liye
 public class PlaylistController {
     
     @Autowired
     private PlaylistService playlistService;
-    
+    // ==========================================
+    // 1. SIMPLE CREATE (Frontend ye use kar raha hai)
+    // URL: /api/playlists/create?name=MyPlaylist
+    // ==========================================
+    @PostMapping("/create")
+    public ResponseEntity<ApiResponse> createPlaylistSimple(@RequestParam String name) {
+        try {
+            // "My Playlist" default description hai
+            PlaylistDTO playlist = playlistService.createPlaylist(name, "My Playlist", true, null);
+            return ResponseEntity.ok(ApiResponse.success("Playlist created successfully", playlist));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(ApiResponse.error("Error: " + e.getMessage()));
+        }
+    }
+
+    // ==========================================
+    // 2. ADVANCED CREATE (JSON Body ke liye - Future Use)
+    // URL: /api/playlists (Body: { "name": "..." })
+    // ==========================================
+    @PostMapping
+    public ResponseEntity<ApiResponse> createPlaylistAdvanced(@RequestBody Map<String, Object> request) {
+        try {
+            String name = (String) request.get("name");
+            String description = (String) request.get("description");
+            Boolean isPublic = (Boolean) request.get("isPublic");
+            
+            if (isPublic == null) isPublic = true;
+            
+            PlaylistDTO playlist = playlistService.createPlaylist(name, description, isPublic, null);
+            return ResponseEntity.ok(ApiResponse.success("Playlist created", playlist));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(ApiResponse.error("Error: " + e.getMessage()));
+        }
+    }
     // Get all public playlists
     @GetMapping
     public ResponseEntity<ApiResponse> getAllPublicPlaylists() {
@@ -32,6 +66,7 @@ public class PlaylistController {
         }
     }
     
+
     // Get playlist by ID
     @GetMapping("/{id}")
     public ResponseEntity<ApiResponse> getPlaylistById(@PathVariable Long id) {
@@ -45,75 +80,7 @@ public class PlaylistController {
                 .body(ApiResponse.error(e.getMessage()));
         }
     }
-    
-    // Create a new playlist
-    @PostMapping
-    public ResponseEntity<ApiResponse> createPlaylist(
-            @RequestHeader(value = "X-User-Id", required = false) Long userId,
-            @RequestBody Map<String, Object> request) {
-        try {
-            String name = (String) request.get("name");
-            String description = (String) request.get("description");
-            Boolean isPublic = (Boolean) request.get("isPublic");
-            
-            if (name == null || name.trim().isEmpty()) {
-                return ResponseEntity.badRequest()
-                    .body(ApiResponse.error("Playlist name is required"));
-            }
-            
-            if (isPublic == null) {
-                isPublic = true; // Default to public
-            }
-            
-            PlaylistDTO playlist = playlistService.createPlaylist(name, description, isPublic, userId);
-            return ResponseEntity.ok(
-                ApiResponse.success("Playlist created successfully", playlist)
-            );
-        } catch (Exception e) {
-            return ResponseEntity.badRequest()
-                .body(ApiResponse.error("Error creating playlist: " + e.getMessage()));
-        }
-    }
-    
-    // Update playlist
-    @PutMapping("/{id}")
-    public ResponseEntity<ApiResponse> updatePlaylist(
-            @PathVariable Long id,
-            @RequestBody Map<String, Object> request) {
-        try {
-            String name = (String) request.get("name");
-            String description = (String) request.get("description");
-            Boolean isPublic = (Boolean) request.get("isPublic");
-            
-            PlaylistDTO playlist = playlistService.updatePlaylist(id, name, description, isPublic);
-            return ResponseEntity.ok(
-                ApiResponse.success("Playlist updated successfully", playlist)
-            );
-        } catch (RuntimeException e) {
-            return ResponseEntity.badRequest()
-                .body(ApiResponse.error(e.getMessage()));
-        }
-    }
-    
-    // Delete playlist
-    @DeleteMapping("/{id}")
-    public ResponseEntity<ApiResponse> deletePlaylist(@PathVariable Long id) {
-        try {
-            boolean deleted = playlistService.deletePlaylist(id);
-            if (deleted) {
-                return ResponseEntity.ok(
-                    ApiResponse.success("Playlist deleted successfully", null)
-                );
-            } else {
-                return ResponseEntity.badRequest()
-                    .body(ApiResponse.error("Playlist not found"));
-            }
-        } catch (Exception e) {
-            return ResponseEntity.badRequest()
-                .body(ApiResponse.error("Error deleting playlist: " + e.getMessage()));
-        }
-    }
-    
+
     // Add song to playlist
     @PostMapping("/{playlistId}/songs/{songId}")
     public ResponseEntity<ApiResponse> addSongToPlaylist(
@@ -159,40 +126,16 @@ public class PlaylistController {
                 .body(ApiResponse.error(e.getMessage()));
         }
     }
+
+    // Delete playlist
+    @DeleteMapping("/{id}")
+    public ResponseEntity<ApiResponse> deletePlaylist(@PathVariable Long id) {
+        playlistService.deletePlaylist(id);
+        return ResponseEntity.ok(ApiResponse.success("Playlist deleted", null));
+    }
     
-    // Search playlists by name
     @GetMapping("/search")
     public ResponseEntity<ApiResponse> searchPlaylistsByName(@RequestParam String name) {
-        try {
-            List<PlaylistDTO> playlists = playlistService.searchPlaylistsByName(name);
-            return ResponseEntity.ok(
-                ApiResponse.success("Playlists search results", playlists)
-            );
-        } catch (Exception e) {
-            return ResponseEntity.badRequest()
-                .body(ApiResponse.error("Error searching playlists: " + e.getMessage()));
-        }
-    }
-    
-    // Get playlists containing a specific song
-    @GetMapping("/containing-song/{songId}")
-    public ResponseEntity<ApiResponse> getPlaylistsContainingSong(@PathVariable Long songId) {
-        try {
-            List<PlaylistDTO> playlists = playlistService.getPlaylistsContainingSong(songId);
-            return ResponseEntity.ok(
-                ApiResponse.success("Playlists containing the song", playlists)
-            );
-        } catch (Exception e) {
-            return ResponseEntity.badRequest()
-                .body(ApiResponse.error("Error getting playlists: " + e.getMessage()));
-        }
-    }
-    
-    // Health check
-    @GetMapping("/health")
-    public ResponseEntity<ApiResponse> healthCheck() {
-        return ResponseEntity.ok(
-            ApiResponse.success("Playlist API is working!", Map.of("status", "healthy", "timestamp", System.currentTimeMillis()))
-        );
+        return ResponseEntity.ok(ApiResponse.success("Search results", playlistService.searchPlaylistsByName(name)));
     }
 }

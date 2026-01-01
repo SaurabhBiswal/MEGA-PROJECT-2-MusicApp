@@ -16,8 +16,11 @@ public class SongDTO {
     private String genre;
     private Integer duration;
     private String audioUrl;
-    private String albumArt;
-    private Integer year;
+    
+    // IS LINE KO ADD KARO AGAR MISSING HAI
+    private String albumArtUrl; 
+    
+    private Integer releaseYear;
     private LocalDateTime uploadedAt;
     private Long uploaderId;
     private Double averageRating;
