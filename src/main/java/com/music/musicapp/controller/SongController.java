@@ -4,8 +4,12 @@ import org.springframework.core.io.UrlResource;
 import org.springframework.http.MediaType;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
+
 import com.music.musicapp.dto.ApiResponse;
 import com.music.musicapp.dto.SongDTO;
+import com.music.musicapp.model.Song;
+import com.music.musicapp.repository.SongRepository;
 import com.music.musicapp.service.SongService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.List;
-
+import java.util.Optional;
 @RestController
 @RequestMapping("/api/songs")
 @CrossOrigin(origins = "*")
@@ -21,6 +25,8 @@ public class SongController {
     
     @Autowired
     private SongService songService;
+    @Autowired
+private SongRepository songRepository;
     // FIX: Upload Endpoint jo missing tha
  @PostMapping("/upload")
     public ResponseEntity<ApiResponse> uploadSong(
@@ -161,6 +167,31 @@ public ResponseEntity<ApiResponse> searchExternal(@RequestParam String query) {
         return ResponseEntity.ok(ApiResponse.success("External songs found", songs));
     } catch (Exception e) {
         return ResponseEntity.badRequest().body(ApiResponse.error(e.getMessage()));
+    }
+}
+// SongController.java
+
+@PostMapping("/add-external")
+public ResponseEntity<ApiResponse> addExternalSong(@RequestBody SongDTO songDTO) {
+    try {
+        // Check if song already exists using the method we added in Repository
+        Optional<Song> existing = songRepository.findByAudioUrl(songDTO.getAudioUrl());
+        
+        if (existing.isPresent()) {
+            return ResponseEntity.ok(ApiResponse.success("Song already exists", existing.get()));
+        }
+
+        Song song = new Song();
+        song.setTitle(songDTO.getTitle());
+        song.setArtist(songDTO.getArtist());
+        song.setAudioUrl(songDTO.getAudioUrl());
+        song.setAlbumArtUrl(songDTO.getAlbumArtUrl());
+        song.setUploadedAt(LocalDateTime.now()); // Optional but good for stats
+
+        Song saved = songRepository.save(song);
+        return ResponseEntity.ok(ApiResponse.success("Song synced to DB", saved));
+    } catch (Exception e) {
+        return ResponseEntity.badRequest().body(ApiResponse.error("Sync failed: " + e.getMessage()));
     }
 }
 }
