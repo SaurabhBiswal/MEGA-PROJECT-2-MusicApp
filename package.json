@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "@clerk/clerk-react": "^5.59.2",
+    "axios": "^1.13.2",
     "react-player": "^3.4.0"
   }
 }

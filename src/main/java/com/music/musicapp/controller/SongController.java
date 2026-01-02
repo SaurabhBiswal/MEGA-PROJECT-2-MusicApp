@@ -41,7 +41,7 @@ private SongRepository songRepository;
         }
     }
     // Get all songs
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<ApiResponse> getAllSongs() {
         List<SongDTO> songs = songService.getAllSongs();
         return ResponseEntity.ok(
