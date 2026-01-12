@@ -1,76 +1,18 @@
-HELP.md
-target/
-.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
-.env
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
-
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
-
-### VS Code ###
-.vscode/
-# Backend (Spring Boot)
-backend/target/
-backend/.idea/
-backend/*.iml
-backend/.classpath
-backend/.project
-backend/.settings/
-backend/bin/
-
-# Frontend (React)
-frontend/node_modules/
-frontend/build/
-frontend/.env
-frontend/.env.local
-frontend/.env.development.local
-frontend/.env.test.local
-frontend/.env.production.local
-frontend/npm-debug.log*
-frontend/yarn-debug.log*
-frontend/yarn-error.log*
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Database files (if any)
+﻿# Database files
+data/
 *.db
-*.sqlite
 
-# Logs
-*.log
+# Log files
 logs/
+*.log
 
-# Temp files
-tmp/
-temp/
+# Build files
+target/
+build/
+
+# IDE files
+.idea/
+.vscode/
+
+# Uploads
+uploads/

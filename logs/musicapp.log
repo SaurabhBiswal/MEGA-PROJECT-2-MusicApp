@@ -14013,3 +14013,4804 @@ select u1_0.id,u1_0.bio,u1_0.created_at,u1_0.email,u1_0.full_name,u1_0.is_active
 2026-01-12 21:31:02 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
 2026-01-12 21:31:02 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 2026-01-12 21:31:02 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-01-12 22:19:11 [main] INFO  c.music.musicapp.MusicappApplication - Starting MusicappApplication using Java 21.0.9 with PID 9004 (C:\Users\punpu\OneDrive\Desktop\musicapp\target\classes started by punpu in C:\Users\punpu\OneDrive\Desktop\musicapp)
+2026-01-12 22:19:11 [main] DEBUG c.music.musicapp.MusicappApplication - Running with Spring Boot v3.5.9, Spring v6.2.15
+2026-01-12 22:19:11 [main] INFO  c.music.musicapp.MusicappApplication - No active profile set, falling back to 1 default profile: "default"
+2026-01-12 22:19:12 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-12 22:19:12 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 163 ms. Found 9 JPA repository interfaces.
+2026-01-12 22:19:13 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-01-12 22:19:13 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-01-12 22:19:13 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.50]
+2026-01-12 22:19:13 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-01-12 22:19:13 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2112 ms
+2026-01-12 22:19:13 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-12 22:19:14 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.39.Final
+2026-01-12 22:19:14 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-01-12 22:19:14 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-12 22:19:14 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-01-12 22:19:14 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/musicdb user=SA
+2026-01-12 22:19:14 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-01-12 22:19:14 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-01-12 22:19:14 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-01-12 22:19:15 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-12 22:19:15 [main] DEBUG org.hibernate.SQL - 
+    alter table if exists users 
+       add column role varchar(255)
+2026-01-12 22:19:15 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-12 22:19:16 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-01-12 22:19:17 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-12 22:19:17 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
+2026-01-12 22:19:17 [main] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: e6ebd0f7-afc4-4d22-9b81-90e027f9db14
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-01-12 22:19:17 [main] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-01-12 22:19:17 [main] INFO  o.s.v.b.OptionalValidatorFactoryBean - Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2026-01-12 22:19:17 [main] WARN  o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration - Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2026-01-12 22:19:17 [main] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:./data/musicdb'
+2026-01-12 22:19:18 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-01-12 22:19:18 [main] INFO  c.music.musicapp.MusicappApplication - Started MusicappApplication in 7.059 seconds (process running for 7.696)
+2026-01-12 22:19:18 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        users u1_0
+2026-01-12 22:19:18 [main] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.full_name,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.password,
+        u1_0.profile_picture,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.username 
+    from
+        users u1_0
+2026-01-12 22:19:18 [main] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.full_name,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.password,
+        u1_0.profile_picture,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.username 
+    from
+        users u1_0
+2026-01-12 22:19:18 [main] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.full_name,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.password,
+        u1_0.profile_picture,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.username,
+        op1_0.user_id,
+        op1_0.id,
+        op1_0.created_at,
+        op1_0.description,
+        op1_0.is_public,
+        op1_0.name,
+        op1_0.updated_at 
+    from
+        users u1_0 
+    left join
+        playlists op1_0 
+            on u1_0.id=op1_0.user_id 
+    where
+        u1_0.id=?
+2026-01-12 22:19:18 [main] DEBUG org.hibernate.SQL - 
+    select
+        r1_0.user_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rated_at,
+        r1_0.rating_value,
+        r1_0.song_id,
+        r1_0.track_id 
+    from
+        ratings r1_0 
+    where
+        r1_0.user_id=?
+2026-01-12 22:19:18 [main] DEBUG org.hibernate.SQL - 
+    select
+        ph1_0.user_id,
+        ph1_0.id,
+        ph1_0.play_duration_seconds,
+        ph1_0.played_at,
+        ph1_0.song_id 
+    from
+        play_history ph1_0 
+    where
+        ph1_0.user_id=?
+2026-01-12 22:19:18 [main] DEBUG org.hibernate.SQL - 
+    update
+        users 
+    set
+        bio=?,
+        created_at=?,
+        email=?,
+        full_name=?,
+        is_active=?,
+        last_login=?,
+        password=?,
+        profile_picture=?,
+        role=?,
+        updated_at=?,
+        username=? 
+    where
+        id=?
+2026-01-12 22:19:18 [main] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.full_name,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.password,
+        u1_0.profile_picture,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.username,
+        op1_0.user_id,
+        op1_0.id,
+        op1_0.created_at,
+        op1_0.description,
+        op1_0.is_public,
+        op1_0.name,
+        op1_0.updated_at 
+    from
+        users u1_0 
+    left join
+        playlists op1_0 
+            on u1_0.id=op1_0.user_id 
+    where
+        u1_0.id=?
+2026-01-12 22:19:18 [main] DEBUG org.hibernate.SQL - 
+    select
+        r1_0.user_id,
+        r1_0.id,
+        r1_0.comment,
+        r1_0.rated_at,
+        r1_0.rating_value,
+        r1_0.song_id,
+        r1_0.track_id 
+    from
+        ratings r1_0 
+    where
+        r1_0.user_id=?
+2026-01-12 22:19:18 [main] DEBUG org.hibernate.SQL - 
+    select
+        ph1_0.user_id,
+        ph1_0.id,
+        ph1_0.play_duration_seconds,
+        ph1_0.played_at,
+        ph1_0.song_id 
+    from
+        play_history ph1_0 
+    where
+        ph1_0.user_id=?
+2026-01-12 22:19:18 [main] DEBUG org.hibernate.SQL - 
+    update
+        users 
+    set
+        bio=?,
+        created_at=?,
+        email=?,
+        full_name=?,
+        is_active=?,
+        last_login=?,
+        password=?,
+        profile_picture=?,
+        role=?,
+        updated_at=?,
+        username=? 
+    where
+        id=?
+2026-01-12 22:19:18 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        songs s1_0
+2026-01-12 22:19:18 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        songs s1_0
+2026-01-12 22:19:18 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        playlists p1_0
+2026-01-12 22:19:18 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        songs s1_0
+2026-01-12 22:19:18 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        playlists p1_0
+2026-01-12 22:19:18 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        users u1_0
+2026-01-12 22:19:26 [http-nio-8080-exec-3] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-12 22:19:26 [http-nio-8080-exec-3] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-01-12 22:19:26 [http-nio-8080-exec-3] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2026-01-12 22:19:26 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        songs s1_0
+2026-01-12 22:19:26 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.id,
+        s1_0.album,
+        s1_0.album_art_url,
+        s1_0.artist,
+        s1_0.audio_url,
+        s1_0.average_rating,
+        s1_0.bitrate,
+        s1_0.created_at,
+        s1_0.download_count,
+        s1_0.duration,
+        s1_0.external_id,
+        s1_0.file_format,
+        s1_0.file_path,
+        s1_0.file_size,
+        s1_0.genre,
+        s1_0.is_explicit,
+        s1_0.is_licensed,
+        s1_0.is_offline_available,
+        s1_0.like_count,
+        s1_0.play_count,
+        s1_0.rating_count,
+        s1_0.release_year,
+        s1_0.share_count,
+        s1_0.source,
+        s1_0.title,
+        s1_0.uploaded_at,
+        s1_0.uploader_id 
+    from
+        songs s1_0
+2026-01-12 22:19:26 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        playlists p1_0
+2026-01-12 22:19:26 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        users u1_0
+2026-01-12 22:19:26 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.description,
+        p1_0.is_public,
+        p1_0.name,
+        p1_0.updated_at,
+        p1_0.user_id 
+    from
+        playlists p1_0 
+    left join
+        users u1_0 
+            on u1_0.id=p1_0.user_id 
+    where
+        u1_0.id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.full_name,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.password,
+        u1_0.profile_picture,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        songs s1_0
+2026-01-12 22:19:26 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        playlists p1_0
+2026-01-12 22:19:26 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        users u1_0
+2026-01-12 22:19:26 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.description,
+        p1_0.is_public,
+        p1_0.name,
+        p1_0.updated_at,
+        p1_0.user_id 
+    from
+        playlists p1_0 
+    left join
+        users u1_0 
+            on u1_0.id=p1_0.user_id 
+    where
+        u1_0.id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.full_name,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.password,
+        u1_0.profile_picture,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.description,
+        p1_0.is_public,
+        p1_0.name,
+        p1_0.updated_at,
+        p1_0.user_id 
+    from
+        playlists p1_0 
+    left join
+        users u1_0 
+            on u1_0.id=p1_0.user_id 
+    where
+        u1_0.id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.full_name,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.password,
+        u1_0.profile_picture,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.description,
+        p1_0.is_public,
+        p1_0.name,
+        p1_0.updated_at,
+        p1_0.user_id 
+    from
+        playlists p1_0 
+    left join
+        users u1_0 
+            on u1_0.id=p1_0.user_id 
+    where
+        u1_0.id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.full_name,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.password,
+        u1_0.profile_picture,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.id,
+        s1_0.album,
+        s1_0.album_art_url,
+        s1_0.artist,
+        s1_0.audio_url,
+        s1_0.average_rating,
+        s1_0.bitrate,
+        s1_0.created_at,
+        s1_0.download_count,
+        s1_0.duration,
+        s1_0.external_id,
+        s1_0.file_format,
+        s1_0.file_path,
+        s1_0.file_size,
+        s1_0.genre,
+        s1_0.is_explicit,
+        s1_0.is_licensed,
+        s1_0.is_offline_available,
+        s1_0.like_count,
+        s1_0.play_count,
+        s1_0.rating_count,
+        s1_0.release_year,
+        s1_0.share_count,
+        s1_0.source,
+        s1_0.title,
+        s1_0.uploaded_at,
+        s1_0.uploader_id 
+    from
+        songs s1_0
+2026-01-12 22:19:26 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:19:26 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        songs s1_0
+2026-01-12 22:31:17 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.id,
+        s1_0.album,
+        s1_0.album_art_url,
+        s1_0.artist,
+        s1_0.audio_url,
+        s1_0.average_rating,
+        s1_0.bitrate,
+        s1_0.created_at,
+        s1_0.download_count,
+        s1_0.duration,
+        s1_0.external_id,
+        s1_0.file_format,
+        s1_0.file_path,
+        s1_0.file_size,
+        s1_0.genre,
+        s1_0.is_explicit,
+        s1_0.is_licensed,
+        s1_0.is_offline_available,
+        s1_0.like_count,
+        s1_0.play_count,
+        s1_0.rating_count,
+        s1_0.release_year,
+        s1_0.share_count,
+        s1_0.source,
+        s1_0.title,
+        s1_0.uploaded_at,
+        s1_0.uploader_id 
+    from
+        songs s1_0
+2026-01-12 22:31:17 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        playlists p1_0
+2026-01-12 22:31:17 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        users u1_0
+2026-01-12 22:31:17 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.description,
+        p1_0.is_public,
+        p1_0.name,
+        p1_0.updated_at,
+        p1_0.user_id 
+    from
+        playlists p1_0 
+    left join
+        users u1_0 
+            on u1_0.id=p1_0.user_id 
+    where
+        u1_0.id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.full_name,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.password,
+        u1_0.profile_picture,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        songs s1_0
+2026-01-12 22:31:17 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        playlists p1_0
+2026-01-12 22:31:17 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        users u1_0
+2026-01-12 22:31:17 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.description,
+        p1_0.is_public,
+        p1_0.name,
+        p1_0.updated_at,
+        p1_0.user_id 
+    from
+        playlists p1_0 
+    left join
+        users u1_0 
+            on u1_0.id=p1_0.user_id 
+    where
+        u1_0.id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.full_name,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.password,
+        u1_0.profile_picture,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.description,
+        p1_0.is_public,
+        p1_0.name,
+        p1_0.updated_at,
+        p1_0.user_id 
+    from
+        playlists p1_0 
+    left join
+        users u1_0 
+            on u1_0.id=p1_0.user_id 
+    where
+        u1_0.id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.full_name,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.password,
+        u1_0.profile_picture,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.id,
+        s1_0.album,
+        s1_0.album_art_url,
+        s1_0.artist,
+        s1_0.audio_url,
+        s1_0.average_rating,
+        s1_0.bitrate,
+        s1_0.created_at,
+        s1_0.download_count,
+        s1_0.duration,
+        s1_0.external_id,
+        s1_0.file_format,
+        s1_0.file_path,
+        s1_0.file_size,
+        s1_0.genre,
+        s1_0.is_explicit,
+        s1_0.is_licensed,
+        s1_0.is_offline_available,
+        s1_0.like_count,
+        s1_0.play_count,
+        s1_0.rating_count,
+        s1_0.release_year,
+        s1_0.share_count,
+        s1_0.source,
+        s1_0.title,
+        s1_0.uploaded_at,
+        s1_0.uploader_id 
+    from
+        songs s1_0
+2026-01-12 22:31:17 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.description,
+        p1_0.is_public,
+        p1_0.name,
+        p1_0.updated_at,
+        p1_0.user_id 
+    from
+        playlists p1_0 
+    left join
+        users u1_0 
+            on u1_0.id=p1_0.user_id 
+    where
+        u1_0.id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.full_name,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.password,
+        u1_0.profile_picture,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:31:17 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:31:21 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.id,
+        s1_0.album,
+        s1_0.album_art_url,
+        s1_0.artist,
+        s1_0.audio_url,
+        s1_0.average_rating,
+        s1_0.bitrate,
+        s1_0.created_at,
+        s1_0.download_count,
+        s1_0.duration,
+        s1_0.external_id,
+        s1_0.file_format,
+        s1_0.file_path,
+        s1_0.file_size,
+        s1_0.genre,
+        s1_0.is_explicit,
+        s1_0.is_licensed,
+        s1_0.is_offline_available,
+        s1_0.like_count,
+        s1_0.play_count,
+        s1_0.rating_count,
+        s1_0.release_year,
+        s1_0.share_count,
+        s1_0.source,
+        s1_0.title,
+        s1_0.uploaded_at,
+        s1_0.uploader_id 
+    from
+        songs s1_0
+2026-01-12 22:31:27 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.id,
+        s1_0.album,
+        s1_0.album_art_url,
+        s1_0.artist,
+        s1_0.audio_url,
+        s1_0.average_rating,
+        s1_0.bitrate,
+        s1_0.created_at,
+        s1_0.download_count,
+        s1_0.duration,
+        s1_0.external_id,
+        s1_0.file_format,
+        s1_0.file_path,
+        s1_0.file_size,
+        s1_0.genre,
+        s1_0.is_explicit,
+        s1_0.is_licensed,
+        s1_0.is_offline_available,
+        s1_0.like_count,
+        s1_0.play_count,
+        s1_0.rating_count,
+        s1_0.release_year,
+        s1_0.share_count,
+        s1_0.source,
+        s1_0.title,
+        s1_0.uploaded_at,
+        s1_0.uploader_id 
+    from
+        songs s1_0
+2026-01-12 22:31:27 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        songs s1_0
+2026-01-12 22:31:27 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        playlists p1_0
+2026-01-12 22:31:27 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        users u1_0
+2026-01-12 22:31:27 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        songs s1_0
+2026-01-12 22:31:27 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        playlists p1_0
+2026-01-12 22:31:27 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        users u1_0
+2026-01-12 22:31:27 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.id,
+        s1_0.album,
+        s1_0.album_art_url,
+        s1_0.artist,
+        s1_0.audio_url,
+        s1_0.average_rating,
+        s1_0.bitrate,
+        s1_0.created_at,
+        s1_0.download_count,
+        s1_0.duration,
+        s1_0.external_id,
+        s1_0.file_format,
+        s1_0.file_path,
+        s1_0.file_size,
+        s1_0.genre,
+        s1_0.is_explicit,
+        s1_0.is_licensed,
+        s1_0.is_offline_available,
+        s1_0.like_count,
+        s1_0.play_count,
+        s1_0.rating_count,
+        s1_0.release_year,
+        s1_0.share_count,
+        s1_0.source,
+        s1_0.title,
+        s1_0.uploaded_at,
+        s1_0.uploader_id 
+    from
+        songs s1_0
+2026-01-12 22:31:34 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.full_name,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.password,
+        u1_0.profile_picture,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=? 
+        or u1_0.email=?
+2026-01-12 22:31:34 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.description,
+        p1_0.is_public,
+        p1_0.name,
+        p1_0.updated_at,
+        p1_0.user_id 
+    from
+        playlists p1_0 
+    left join
+        users u1_0 
+            on u1_0.id=p1_0.user_id 
+    where
+        u1_0.id=?
+2026-01-12 22:31:34 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.full_name,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.password,
+        u1_0.profile_picture,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-01-12 22:31:34 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:31:34 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:31:34 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:31:34 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:31:34 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:31:34 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:31:34 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:31:34 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:31:34 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:31:34 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:31:34 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.description,
+        p1_0.is_public,
+        p1_0.name,
+        p1_0.updated_at,
+        p1_0.user_id 
+    from
+        playlists p1_0 
+    left join
+        users u1_0 
+            on u1_0.id=p1_0.user_id 
+    where
+        u1_0.id=?
+2026-01-12 22:31:34 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.full_name,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.password,
+        u1_0.profile_picture,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-01-12 22:31:34 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:31:34 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:31:34 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:31:34 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:31:34 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:31:34 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:31:34 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:31:34 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:31:34 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:31:34 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:31:40 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.description,
+        p1_0.is_public,
+        p1_0.name,
+        p1_0.updated_at,
+        p1_0.user_id 
+    from
+        playlists p1_0 
+    where
+        p1_0.id=?
+2026-01-12 22:31:40 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.full_name,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.password,
+        u1_0.profile_picture,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-01-12 22:31:40 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:31:40 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:31:43 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.description,
+        p1_0.is_public,
+        p1_0.name,
+        p1_0.updated_at,
+        p1_0.user_id 
+    from
+        playlists p1_0 
+    where
+        p1_0.id=?
+2026-01-12 22:31:43 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.full_name,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.password,
+        u1_0.profile_picture,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-01-12 22:31:43 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:31:43 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:31:43 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.description,
+        p1_0.is_public,
+        p1_0.name,
+        p1_0.updated_at,
+        p1_0.user_id 
+    from
+        playlists p1_0 
+    where
+        p1_0.id=?
+2026-01-12 22:31:43 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.full_name,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.password,
+        u1_0.profile_picture,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-01-12 22:31:43 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:31:43 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:31:49 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.description,
+        p1_0.is_public,
+        p1_0.name,
+        p1_0.updated_at,
+        p1_0.user_id 
+    from
+        playlists p1_0 
+    where
+        p1_0.id=?
+2026-01-12 22:31:49 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.full_name,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.password,
+        u1_0.profile_picture,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-01-12 22:31:49 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:31:49 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:31:50 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.description,
+        p1_0.is_public,
+        p1_0.name,
+        p1_0.updated_at,
+        p1_0.user_id 
+    from
+        playlists p1_0 
+    where
+        p1_0.id=?
+2026-01-12 22:31:50 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.full_name,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.password,
+        u1_0.profile_picture,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-01-12 22:31:50 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:31:50 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:31:53 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.description,
+        p1_0.is_public,
+        p1_0.name,
+        p1_0.updated_at,
+        p1_0.user_id 
+    from
+        playlists p1_0 
+    where
+        p1_0.id=?
+2026-01-12 22:31:53 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.full_name,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.password,
+        u1_0.profile_picture,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-01-12 22:31:53 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:31:53 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:31:54 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.description,
+        p1_0.is_public,
+        p1_0.name,
+        p1_0.updated_at,
+        p1_0.user_id 
+    from
+        playlists p1_0 
+    where
+        p1_0.id=?
+2026-01-12 22:31:54 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.full_name,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.password,
+        u1_0.profile_picture,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-01-12 22:31:54 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:31:54 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:31:54 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.description,
+        p1_0.is_public,
+        p1_0.name,
+        p1_0.updated_at,
+        p1_0.user_id 
+    from
+        playlists p1_0 
+    where
+        p1_0.id=?
+2026-01-12 22:31:54 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.full_name,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.password,
+        u1_0.profile_picture,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-01-12 22:31:54 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:31:54 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:31:54 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.description,
+        p1_0.is_public,
+        p1_0.name,
+        p1_0.updated_at,
+        p1_0.user_id 
+    from
+        playlists p1_0 
+    where
+        p1_0.id=?
+2026-01-12 22:31:54 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.full_name,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.password,
+        u1_0.profile_picture,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-01-12 22:31:54 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:31:54 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:31:55 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.description,
+        p1_0.is_public,
+        p1_0.name,
+        p1_0.updated_at,
+        p1_0.user_id 
+    from
+        playlists p1_0 
+    where
+        p1_0.id=?
+2026-01-12 22:31:55 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.bio,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.full_name,
+        u1_0.is_active,
+        u1_0.last_login,
+        u1_0.password,
+        u1_0.profile_picture,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-01-12 22:31:55 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.playlist_id,
+        s1_1.id,
+        s1_1.album,
+        s1_1.album_art_url,
+        s1_1.artist,
+        s1_1.audio_url,
+        s1_1.average_rating,
+        s1_1.bitrate,
+        s1_1.created_at,
+        s1_1.download_count,
+        s1_1.duration,
+        s1_1.external_id,
+        s1_1.file_format,
+        s1_1.file_path,
+        s1_1.file_size,
+        s1_1.genre,
+        s1_1.is_explicit,
+        s1_1.is_licensed,
+        s1_1.is_offline_available,
+        s1_1.like_count,
+        s1_1.play_count,
+        s1_1.rating_count,
+        s1_1.release_year,
+        s1_1.share_count,
+        s1_1.source,
+        s1_1.title,
+        s1_1.uploaded_at,
+        s1_1.uploader_id 
+    from
+        playlist_songs s1_0 
+    join
+        songs s1_1 
+            on s1_1.id=s1_0.song_id 
+    where
+        s1_0.playlist_id=?
+2026-01-12 22:31:55 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        f1_0.playlist_id,
+        f1_1.id,
+        f1_1.bio,
+        f1_1.created_at,
+        f1_1.email,
+        f1_1.full_name,
+        f1_1.is_active,
+        f1_1.last_login,
+        f1_1.password,
+        f1_1.profile_picture,
+        f1_1.role,
+        f1_1.updated_at,
+        f1_1.username 
+    from
+        user_followed_playlists f1_0 
+    join
+        users f1_1 
+            on f1_1.id=f1_0.user_id 
+    where
+        f1_0.playlist_id=?
+2026-01-12 22:32:01 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        s1_0.id,
+        s1_0.album,
+        s1_0.album_art_url,
+        s1_0.artist,
+        s1_0.audio_url,
+        s1_0.average_rating,
+        s1_0.bitrate,
+        s1_0.created_at,
+        s1_0.download_count,
+        s1_0.duration,
+        s1_0.external_id,
+        s1_0.file_format,
+        s1_0.file_path,
+        s1_0.file_size,
+        s1_0.genre,
+        s1_0.is_explicit,
+        s1_0.is_licensed,
+        s1_0.is_offline_available,
+        s1_0.like_count,
+        s1_0.play_count,
+        s1_0.rating_count,
+        s1_0.release_year,
+        s1_0.share_count,
+        s1_0.source,
+        s1_0.title,
+        s1_0.uploaded_at,
+        s1_0.uploader_id 
+    from
+        songs s1_0
