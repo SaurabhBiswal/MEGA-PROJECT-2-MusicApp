@@ -15,6 +15,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.List;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -62,23 +63,27 @@ public class DataLoader implements CommandLineRunner {
             defaultUser.setCreatedAt(LocalDateTime.now());
             defaultUser.setUpdatedAt(LocalDateTime.now());
             defaultUser.setActive(true);
+            // ✅ ADD ROLE FOR ADMIN
+            defaultUser.setRole("ADMIN");
             defaultUser = userRepository.save(defaultUser);
-            System.out.println("✅ Created default admin user");
+            System.out.println("✅ Created default admin user with ADMIN role");
         } else {
             defaultUser = userRepository.findAll().get(0);
+            // ✅ UPDATE EXISTING USERS WITH ROLES
+            updateExistingUsersWithRole();
         }
         
         // 4. Add sample songs to database if empty
         if (songRepository.count() == 0) {
             try {
-                // Song 1: The Weeknd (matches your API response)
+                // Song 1: The Weeknd
                 Song song1 = new Song();
                 song1.setTitle("Blinding Lights");
                 song1.setArtist("The Weeknd");
                 song1.setAlbum("After Hours");
                 song1.setReleaseYear(2020);
                 song1.setDuration(200);
-                song1.setAudioUrl("/api/stream/audio/sample.mp3"); // Fixed URL
+                song1.setAudioUrl("/api/stream/audio/sample.mp3");
                 song1.setGenre("Pop");
                 song1.setUploadedAt(LocalDateTime.now().minusDays(5));
                 song1.setAlbumArtUrl("https://via.placeholder.com/150/FF6B6B/ffffff?text=BL");
@@ -87,7 +92,7 @@ public class DataLoader implements CommandLineRunner {
                 song1.setRatingCount(150);
                 songRepository.save(song1);
                 
-                // Song 2: Ed Sheeran (matches your API response)
+                // Song 2: Ed Sheeran
                 Song song2 = new Song();
                 song2.setTitle("Shape of You");
                 song2.setArtist("Ed Sheeran");
@@ -103,7 +108,7 @@ public class DataLoader implements CommandLineRunner {
                 song2.setRatingCount(200);
                 songRepository.save(song2);
                 
-                // Song 3: Queen (matches your API response)
+                // Song 3: Queen
                 Song song3 = new Song();
                 song3.setTitle("Bohemian Rhapsody");
                 song3.setArtist("Queen");
@@ -119,7 +124,7 @@ public class DataLoader implements CommandLineRunner {
                 song3.setRatingCount(300);
                 songRepository.save(song3);
                 
-                // Song 4: Michael Jackson (matches your API response)
+                // Song 4: Michael Jackson
                 Song song4 = new Song();
                 song4.setTitle("Billie Jean");
                 song4.setArtist("Michael Jackson");
@@ -135,7 +140,7 @@ public class DataLoader implements CommandLineRunner {
                 song4.setRatingCount(250);
                 songRepository.save(song4);
                 
-                // Song 5: Nirvana (matches your API response)
+                // Song 5: Nirvana
                 Song song5 = new Song();
                 song5.setTitle("Smells Like Teen Spirit");
                 song5.setArtist("Nirvana");
@@ -163,8 +168,7 @@ public class DataLoader implements CommandLineRunner {
         } else {
             System.out.println("✅ Database already has " + songRepository.count() + " songs");
             if (playlistRepository.count() == 0) {
-                // Load existing songs for playlist creation
-                java.util.List<Song> songs = songRepository.findAll();
+                List<Song> songs = songRepository.findAll();
                 if (songs.size() >= 5) {
                     createPlaylists(defaultUser, 
                         songs.get(0), songs.get(1), songs.get(2), songs.get(3), songs.get(4));
@@ -175,14 +179,23 @@ public class DataLoader implements CommandLineRunner {
         System.out.println("🎵 Music App is ready! Total songs in DB: " + songRepository.count());
         System.out.println("📋 Total playlists in DB: " + playlistRepository.count());
         System.out.println("👤 Total users in DB: " + userRepository.count());
-        System.out.println("🌐 Open: http://localhost:8080/");
-        System.out.println("🎧 Audio Test: http://localhost:8080/audio-test.html");
-        System.out.println("📋 Playlists: http://localhost:8080/playlist.html");
-        System.out.println("👥 Social: http://localhost:8080/social.html");
-        System.out.println("📊 H2 Console: http://localhost:8080/h2-console");
-        System.out.println("🔗 API: http://localhost:8080/api/songs");
-        System.out.println("🔗 Playlist API: http://localhost:8080/api/playlists");
-        System.out.println("👤 User API: http://localhost:8080/api/users");
+    }
+    
+    // ✅ NEW METHOD: Update existing users with roles
+    private void updateExistingUsersWithRole() {
+        List<User> users = userRepository.findAll();
+        boolean updated = false;
+        for (User user : users) {
+            if (user.getRole() == null || user.getRole().isEmpty()) {
+                user.setRole("USER");
+                userRepository.save(user);
+                updated = true;
+                System.out.println("✅ Updated role for user: " + user.getUsername());
+            }
+        }
+        if (updated) {
+            System.out.println("✅ Updated roles for existing users");
+        }
     }
     
     private void createPlaylists(User user, Song song1, Song song2, Song song3, Song song4, Song song5) {

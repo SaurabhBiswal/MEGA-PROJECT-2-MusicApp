@@ -51,6 +51,10 @@ public class User {
     @Column(name = "last_login")
     private LocalDateTime lastLogin;
     
+    // ✅ CHANGE THIS: Remove "nullable = false" temporarily
+    @Column(name = "role")
+    private String role = "USER";
+
     // User's owned playlists
     @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -71,8 +75,8 @@ public class User {
     @ManyToMany
     @JoinTable(
         name = "user_followers",
-        joinColumns = @JoinColumn(name = "followed_id"), // This user is being followed
-        inverseJoinColumns = @JoinColumn(name = "follower_id") // Users who follow this user
+        joinColumns = @JoinColumn(name = "followed_id"),
+        inverseJoinColumns = @JoinColumn(name = "follower_id")
     )
     private List<User> followers = new ArrayList<>();
     
@@ -81,8 +85,8 @@ public class User {
     @ManyToMany
     @JoinTable(
         name = "user_following", 
-        joinColumns = @JoinColumn(name = "follower_id"), // This user is the follower
-        inverseJoinColumns = @JoinColumn(name = "followed_id") // Users being followed
+        joinColumns = @JoinColumn(name = "follower_id"),
+        inverseJoinColumns = @JoinColumn(name = "followed_id")
     )
     private List<User> following = new ArrayList<>();
     
@@ -105,12 +109,16 @@ public class User {
         this.createdAt = LocalDateTime.now();
         this.updatedAt = LocalDateTime.now();
         this.isActive = true;
+        this.role = "USER"; // ✅ Set default role in constructor
     }
     
     @PrePersist
     protected void onCreate() {
         createdAt = LocalDateTime.now();
         updatedAt = LocalDateTime.now();
+        if (role == null) {
+            role = "USER"; // ✅ Ensure role is set on creation
+        }
     }
     
     @PreUpdate

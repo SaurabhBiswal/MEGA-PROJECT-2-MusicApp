@@ -9,7 +9,7 @@ import {
   ChevronLeft, Repeat, SkipForward, SkipBack, Share2, 
   AlignLeft, History, Trash2, Settings, Save, MoreVertical, 
   Radio, Info, Monitor, Disc, UserCircle, Shuffle, Layout, 
-  MinusCircle, Edit, Copy, ExternalLink
+  MinusCircle, Edit, Copy, ExternalLink, BarChart3
 } from 'lucide-react';
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
   const [songs, setSongs] = useState([]);
   const [currentSong, setCurrentSong] = useState(null);
   const [view, setView] = useState('home'); 
-  const [stats, setStats] = useState({ totalSongs: 0, totalPlaylists: 0 });
+  const [stats, setStats] = useState({ totalSongs: 0, totalPlaylists: 0, totalUsers: 0 });
   const [isLooping, setIsLooping] = useState('none'); 
   const [isShuffle, setIsShuffle] = useState(false);
   const [playHistory, setPlayHistory] = useState([]);
@@ -39,6 +39,24 @@ function App() {
   // ✅ Auth Form state management
   const [authForm, setAuthForm] = useState({ username: '', password: '', email: '' });
 
+  // ✅ HELPER FUNCTION: Authenticated API calls with JWT
+  const fetchWithAuth = async (url, options = {}) => {
+    const token = localStorage.getItem('token');
+    const headers = {
+      'Content-Type': 'application/json',
+      ...options.headers
+    };
+    
+    if (token) {
+      headers['Authorization'] = `Bearer ${token}`;
+    }
+    
+    return fetch(url, {
+      ...options,
+      headers
+    });
+  };
+
   const loadFeatured = async () => {
     try {
       const res = await getRecentSongs();
@@ -58,23 +76,49 @@ function App() {
 
   const fetchUserPlaylists = async (userId) => {
     try {
-      const result = await getUserPlaylists(userId);
-      if (result.data.status === "success") {
-        setPlaylists(result.data.data);
-        localStorage.setItem(`userPlaylists_${userId}`, JSON.stringify(result.data.data));
+      const res = await fetchWithAuth(`http://localhost:8080/api/playlists/user/${userId}`);
+      const result = await res.json();
+      
+      // ✅ FIX: Ensure playlists is always an array
+      if (result.status === "success") {
+        let playlistData = result.data;
+        
+        // Handle different response formats
+        if (playlistData && playlistData.data) {
+          playlistData = playlistData.data; // If nested in data property
+        }
+        
+        // Convert to array if it's not
+        const playlistsArray = Array.isArray(playlistData) ? playlistData : [];
+        
+        // If it's a single object, put it in array
+        if (playlistData && typeof playlistData === 'object' && !Array.isArray(playlistData)) {
+          playlistsArray.push(playlistData);
+        }
+        
+        setPlaylists(playlistsArray);
+        localStorage.setItem(`userPlaylists_${userId}`, JSON.stringify(playlistsArray));
+      } else {
+        // If API fails or no playlists, set empty array
+        setPlaylists([]);
       }
-    } catch (e) { console.log("PL error"); }
+    } catch (error) {
+      console.error("Error fetching playlists:", error);
+      setPlaylists([]); // ✅ Set empty array on error
+    }
   };
 
   const ensurePlaylistExists = async (userId) => {
     try {
-      const res = await fetch(`http://localhost:8080/api/playlists/user/${userId}`);
+      const res = await fetchWithAuth(`http://localhost:8080/api/playlists/user/${userId}`);
       const result = await res.json();
       if (result.status === "success" && result.data) {
         setUserPlaylistId(result.data.id);
         return result.data.id;
       }
-    } catch (e) { console.log("PL check fail"); }
+    } catch (e) { 
+      console.log("PL check fail"); 
+    }
     return null;
   };
 
@@ -83,17 +127,25 @@ function App() {
     fetchStats();
     const savedUser = localStorage.getItem('user');
     if (savedUser) {
-      const user = JSON.parse(savedUser);
-      setLoggedInUser(user);
-      ensurePlaylistExists(user.id);
-      
-      const savedHistory = localStorage.getItem(`musicHistory_${user.id}`);
-      if (savedHistory) setPlayHistory(JSON.parse(savedHistory));
-      
-      const localPL = localStorage.getItem(`userPlaylists_${user.id}`);
-      if (localPL) setPlaylists(JSON.parse(localPL));
-      
-      fetchUserPlaylists(user.id);
+      try {
+        const user = JSON.parse(savedUser);
+        setLoggedInUser(user);
+        ensurePlaylistExists(user.id);
+        
+        const savedHistory = localStorage.getItem(`musicHistory_${user.id}`);
+        if (savedHistory) setPlayHistory(JSON.parse(savedHistory));
+        
+        const localPL = localStorage.getItem(`userPlaylists_${user.id}`);
+        if (localPL) {
+          const parsed = JSON.parse(localPL);
+          // ✅ Ensure it's an array
+          setPlaylists(Array.isArray(parsed) ? parsed : []);
+        }
+        
+        fetchUserPlaylists(user.id);
+      } catch (error) {
+        console.error("Error loading saved user:", error);
+      }
     }
   }, []);
 
@@ -125,6 +177,7 @@ function App() {
     } catch (e) { alert("Backend is offline!"); }
   };
 
+  // ✅ UPDATED: handleLogin with JWT token handling
   const handleLogin = async () => {
     try {
       const res = await fetch(`http://localhost:8080/api/auth/login`, {
@@ -135,23 +188,37 @@ function App() {
           password: authForm.password 
         })
       });
+      
       const result = await res.json();
+      
       if (result.status === "success") {
-        const user = result.data;
+        // ✅ Extract JWT token and user from response
+        const { token, user } = result.data;
         
+        // ✅ Store JWT token in localStorage
+        localStorage.setItem('token', token);
+        localStorage.setItem('user', JSON.stringify(user));
+        
+        // Set user state
+        setLoggedInUser(user);
+        
+        // ✅ Log for debugging
+        console.log("JWT Token stored:", token);
+        console.log("User role:", user.role);
+        
+        // Clear state
         setPlayHistory([]);
-        setPlaylists([]);
+        setPlaylists([]); // ✅ Reset to empty array
         setUserPlaylistId(null);
         setActivePlaylistId(null);
         setCurrentSong(null);
         setView('home');
         
-        setLoggedInUser(user);
-        localStorage.setItem('user', JSON.stringify(user));
-        
+        // Load user data
         ensurePlaylistExists(user.id);
         fetchUserPlaylists(user.id);
         
+        // Load history
         const savedHistory = localStorage.getItem(`musicHistory_${user.id}`);
         if (savedHistory) {
           setPlayHistory(JSON.parse(savedHistory));
@@ -159,20 +226,20 @@ function App() {
           setPlayHistory([]);
         }
         
-        const cachedPlaylists = localStorage.getItem(`userPlaylists_${user.id}`);
-        if (cachedPlaylists) {
-          setPlaylists(JSON.parse(cachedPlaylists));
-        }
-        
-      } else { alert(result.message || "User nahi mila ya password galat!"); }
-    } catch (e) { alert("Backend band hai!"); }
+      } else { 
+        alert(result.message || "User nahi mila ya password galat!"); 
+      }
+    } catch (e) { 
+      alert("Backend band hai!"); 
+    }
   };
 
-  // ✅ FIXED: Logout should ONLY clear current session, NOT delete user data
+  // ✅ FIXED: Logout should ONLY clear current session
   const handleLogout = () => {
     localStorage.removeItem('user');
+    localStorage.removeItem('token');
     setLoggedInUser(null);
-    setPlaylists([]);
+    setPlaylists([]); // ✅ Set to empty array
     setPlayHistory([]);
     setUserPlaylistId(null);
     setActivePlaylistId(null);
@@ -208,7 +275,9 @@ function App() {
   const removeFromPlaylist = async (songId) => {
     if(!activePlaylistId) return;
     try {
-      const res = await fetch(`http://localhost:8080/api/playlists/${activePlaylistId}/songs/${songId}`, { method: 'DELETE' });
+      const res = await fetchWithAuth(`http://localhost:8080/api/playlists/${activePlaylistId}/songs/${songId}`, { 
+        method: 'DELETE' 
+      });
       if (res.ok) {
         setSongs(songs.filter(s => s.id !== songId));
         setMenuOpen(null);
@@ -402,7 +471,7 @@ function App() {
           <Music /> MusicApp
         </h2>
         <div style={{color: '#b3b3b3', fontSize: '12px', marginBottom: '10px'}}>
-          👤 {loggedInUser.username}
+          👤 {loggedInUser.username} ({loggedInUser.role})
         </div>
         
         <nav style={styles.nav}>
@@ -415,6 +484,14 @@ function App() {
           <div style={{...styles.navItem, color: view === 'history' ? '#1DB954' : 'white'}} onClick={() => setView('history')}>
             <History size={22} /> History
           </div>
+          
+          {/* ✅ ADMIN DASHBOARD LINK - Only show for ADMIN users */}
+          {loggedInUser && loggedInUser.role === 'ADMIN' && (
+            <div style={{...styles.navItem, color: view === 'admin' ? '#1DB954' : 'white'}} onClick={() => setView('admin')}>
+              <BarChart3 size={22} /> Admin Dashboard
+            </div>
+          )}
+          
           <div style={styles.navItem} onClick={handleLogout}>
             <LogOut size={22} /> Logout
           </div>
@@ -434,7 +511,8 @@ function App() {
               Liked Songs
             </div>
             
-            {playlists.map((p) => (
+            {/* ✅ FIX: Check if playlists is array before mapping */}
+            {Array.isArray(playlists) && playlists.map((p) => (
               <div key={p.id} style={styles.playlistItemContainer}>
                 {renamingId === p.id ? (
                   <input 
@@ -482,7 +560,7 @@ function App() {
       </div>
 
       <div style={styles.main}>
-        {view !== 'playing' && (
+        {view !== 'playing' && view !== 'admin' && (
           <div style={styles.searchBar}>
             <input style={styles.input} placeholder="Search songs..." value={query} 
                    onChange={(e) => setQuery(e.target.value)} 
@@ -490,6 +568,34 @@ function App() {
             <button onClick={handleSearch} style={styles.searchBtn}>
               <Search size={20} />
             </button>
+          </div>
+        )}
+
+        {/* ✅ ADMIN DASHBOARD VIEW */}
+        {view === 'admin' && loggedInUser && loggedInUser.role === 'ADMIN' && (
+          <div style={styles.adminContainer}>
+            <h2>📊 Admin Dashboard</h2>
+            <div style={styles.statsGrid}>
+              <div style={styles.statCard}>
+                <h3>👥 Total Users</h3>
+                <p style={styles.statNumber}>{stats.totalUsers || 0}</p>
+              </div>
+              <div style={styles.statCard}>
+                <h3>🎵 Total Songs</h3>
+                <p style={styles.statNumber}>{stats.totalSongs || 0}</p>
+              </div>
+              <div style={styles.statCard}>
+                <h3>📁 Total Playlists</h3>
+                <p style={styles.statNumber}>{stats.totalPlaylists || 0}</p>
+              </div>
+            </div>
+            
+            <div style={styles.adminSection}>
+              <h3>Recent Activity</h3>
+              <p>Welcome, Admin! JWT Authentication is successfully implemented.</p>
+              <p>User Role: <strong>{loggedInUser.role}</strong></p>
+              <p>Features Added: JWT Authentication, Role-Based Access, Admin Dashboard</p>
+            </div>
           </div>
         )}
 
@@ -517,7 +623,8 @@ function App() {
                         <Plus size={14}/> Liked Songs
                       </div>
                       
-                      {playlists.map(p => (
+                      {/* ✅ FIX: Check if playlists is array before mapping */}
+                      {Array.isArray(playlists) && playlists.map(p => (
                         <div key={p.id} style={styles.menuItem} onClick={() => addToSpecificPlaylist(song, p.id)}>
                           <Disc size={14}/> {p.name}
                         </div>
@@ -1038,6 +1145,39 @@ const styles = {
     ':hover': {
       opacity: 1
     }
+  },
+  // ✅ ADMIN DASHBOARD STYLES
+  adminContainer: {
+    padding: '20px',
+    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+    borderRadius: '15px',
+    color: 'white',
+    animation: 'fadeIn 0.6s ease'
+  },
+  statsGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+    gap: '20px',
+    margin: '20px 0'
+  },
+  statCard: {
+    background: 'rgba(255, 255, 255, 0.1)',
+    padding: '20px',
+    borderRadius: '10px',
+    textAlign: 'center',
+    backdropFilter: 'blur(10px)'
+  },
+  statNumber: {
+    fontSize: '2.5rem',
+    fontWeight: 'bold',
+    margin: '10px 0'
+  },
+  adminSection: {
+    background: 'rgba(255, 255, 255, 0.1)',
+    padding: '15px',
+    borderRadius: '10px',
+    margin: '20px 0',
+    backdropFilter: 'blur(10px)'
   }
 };
 
