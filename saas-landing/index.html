@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MusicStream Pro - Professional Music Streaming Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1DB954;
+            --secondary: #191414;
+            --accent: #FF6B6B;
+            --light: #FFFFFF;
+            --dark: #121212;
+            --gray: #B3B3B3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 60px;
+            background: rgba(25, 20, 20, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            padding: 8px 15px;
+            border-radius: 20px;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+            background: rgba(29, 185, 84, 0.1);
+        }
+
+        .launch-btn {
+            background: var(--primary);
+            color: var(--light);
+            border: none;
+            padding: 14px 35px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 20px rgba(29, 185, 84, 0.3);
+        }
+
+        .launch-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(29, 185, 84, 0.4);
+            background: #1ED760;
+        }
+        /**/
+        
+        /* Hero Section - UPDATED WITH YOUR BACKGROUND */
+.hero {
+    padding: 200px 60px 150px;
+    text-align: center;
+    background: 
+        linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+        url('https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    margin: 0 auto;
+    background: rgba(25, 20, 20, 0.7);
+    padding: 60px;
+    border-radius: 30px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+}
+
+.hero h1 {
+    font-size: 4.2rem;
+    margin-bottom: 25px;
+    line-height: 1.1;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.hero-tagline {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: var(--light);
+    max-width: 700px;
+    margin: 0 auto 30px;
+    font-weight: 400;
+    line-height: 1.8;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 50px;
+    color: var(--gray);
+    opacity: 0.9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.hero-subtitle span {
+    background: rgba(29, 185, 84, 0.15);
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 1rem;
+    border: 1px solid rgba(29, 185, 84, 0.3);
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+        .primary-btn {
+            background: var(--primary);
+            color: var(--light);
+            padding: 20px 45px;
+            border-radius: 35px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 6px 25px rgba(29, 185, 84, 0.3);
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px rgba(29, 185, 84, 0.4);
+            background: #1ED760;
+        }
+
+        .secondary-btn {
+            background: transparent;
+            color: var(--light);
+            padding: 20px 45px;
+            border-radius: 35px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-decoration: none;
+            border: 2px solid var(--primary);
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .secondary-btn:hover {
+            background: rgba(29, 185, 84, 0.1);
+            transform: translateY(-4px);
+        }
+
+        /* Features */
+        .features {
+            padding: 120px 60px;
+            background: var(--secondary);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3.2rem;
+            margin-bottom: 70px;
+            color: var(--light);
+        }
+
+        .section-title span {
+            color: var(--primary);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 50px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 45px 35px;
+            border-radius: 25px;
+            text-align: center;
+            transition: all 0.4s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-20px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(29, 185, 84, 0.2);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(29, 185, 84, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+
+        .feature-card h3 {
+            font-size: 1.9rem;
+            margin-bottom: 20px;
+            color: var(--light);
+        }
+
+        .feature-card p {
+            color: var(--gray);
+            font-size: 1.15rem;
+            line-height: 1.8;
+        }
+
+        /* Stats */
+        .stats {
+            padding: 120px 60px;
+            background: linear-gradient(135deg, #121212 0%, #191414 100%);
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            padding: 40px 20px;
+        }
+
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 15px;
+            line-height: 1;
+        }
+
+        .stat-label {
+            color: var(--gray);
+            font-size: 1.3rem;
+            font-weight: 500;
+        }
+
+        /* App Preview */
+        .app-preview {
+            padding: 120px 60px;
+            background: var(--secondary);
+            text-align: center;
+        }
+
+        .preview-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            position: relative;
+        }
+
+        .preview-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(29, 185, 84, 0.1), transparent);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .preview-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .preview-container:hover .preview-image {
+            transform: scale(1.02);
+        }
+
+        /* CTA */
+        .final-cta {
+            padding: 150px 60px;
+            text-align: center;
+            background: linear-gradient(135deg, #121212 0%, #191414 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            right: -50%;
+            bottom: -50%;
+            background: 
+                radial-gradient(circle at 30% 30%, rgba(29, 185, 84, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 70% 70%, rgba(255, 107, 107, 0.15) 0%, transparent 50%);
+            z-index: 0;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .final-cta h2 {
+            font-size: 3.5rem;
+            margin-bottom: 30px;
+            color: var(--light);
+        }
+
+        .final-cta p {
+            max-width: 800px;
+            margin: 0 auto 60px;
+            color: var(--gray);
+            font-size: 1.4rem;
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 80px 60px 50px;
+            background: #0A0A0A;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 40px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+            padding: 8px 20px;
+            border-radius: 20px;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            background: rgba(29, 185, 84, 0.1);
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .social-icons a {
+            width: 55px;
+            height: 55px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+            font-size: 1.5rem;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            background: var(--primary);
+            color: var(--light);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            color: #666;
+            margin-top: 40px;
+            font-size: 1rem;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 1100px) {
+            .navbar {
+                padding: 20px 40px;
+            }
+            
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                padding: 180px 40px 120px;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero-tagline {
+                font-size: 1.3rem;
+            }
+            
+            .features, .stats, .app-preview, .final-cta {
+                padding: 80px 40px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 30px;
+            }
+            
+            .hero {
+                padding: 160px 30px 100px;
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+            
+            .primary-btn, .secondary-btn {
+                width: 100%;
+                max-width: 350px;
+                justify-content: center;
+                padding: 18px 30px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+            
+            .stat-number {
+                font-size: 3rem;
+            }
+            
+            .final-cta h2 {
+                font-size: 2.5rem;
+            }
+            
+            .footer {
+                padding: 60px 30px 40px;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-tagline {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .feature-card {
+                padding: 35px 25px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .social-icons a {
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-music"></i>
+            MusicStream
+        </div>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#stats">Stats</a>
+            <a href="#preview">Preview</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <button class="launch-btn" onclick="launchApp()">
+            <i class="fas fa-rocket"></i> Launch App
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="fade-in">Stream Music Anywhere, Anytime</h1>
+            <p class="hero-tagline fade-in delay-1">
+                Discover millions of songs, create personalized playlists, and enjoy 
+                <strong>studio-quality streaming</strong> across all your devices. 
+                The ultimate music experience designed for true music lovers.
+            </p>
+            <div class="hero-subtitle fade-in delay-2">
+                <span><i class="fab fa-youtube"></i> YouTube Music</span>
+                <span><i class="fas fa-robot"></i> Smart AI Recommendations</span>
+                <span><i class="fas fa-sync-alt"></i> Cross-Platform Sync</span>
+                <span><i class="fas fa-music"></i> 4300+ Songs Library</span>
+            </div>
+            <div class="cta-buttons">
+                <button class="primary-btn fade-in delay-2" onclick="launchApp()">
+                    <i class="fas fa-play-circle"></i> Start Free Listening
+                </button>
+                <a href="#features" class="secondary-btn fade-in delay-3">
+                    <i class="fas fa-chart-line"></i> Explore Features
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features" id="features">
+        <h2 class="section-title fade-in">Why Choose <span>MusicStream</span>?</h2>
+        <div class="features-grid">
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <i class="fas fa-broadcast-tower"></i>
+                </div>
+                <h3>High-Quality Streaming</h3>
+                <p>Enjoy crystal clear 320kbps audio with adaptive bitrate. Perfect streaming on any connection without buffering.</p>
+            </div>
+            <div class="feature-card fade-in delay-1">
+                <div class="feature-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>Cross Platform</h3>
+                <p>Access your music from desktop, mobile, or tablet. Your playlists sync automatically across all devices in real-time.</p>
+            </div>
+            <div class="feature-card fade-in delay-2">
+                <div class="feature-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3>Smart AI Recommendations</h3>
+                <p>Get personalized song suggestions based on your listening history. Discover new music you'll love.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats" id="stats">
+        <div class="stats-grid">
+            <div class="stat-item fade-in">
+                <div class="stat-number" id="songCount">0</div>
+                <div class="stat-label">Songs Available</div>
+            </div>
+            <div class="stat-item fade-in delay-1">
+                <div class="stat-number" id="userCount">0</div>
+                <div class="stat-label">Active Users</div>
+            </div>
+            <div class="stat-item fade-in delay-2">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Uptime</div>
+            </div>
+            <div class="stat-item fade-in delay-3">
+                <div class="stat-number" id="playlistCount">0</div>
+                <div class="stat-label">Playlists Created</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Preview -->
+    <section class="app-preview" id="preview">
+        <h2 class="section-title fade-in">Professional Music Player</h2>
+        <div class="preview-container fade-in delay-1">
+            <img src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+                 alt="Music App Interface" class="preview-image">
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="cta-content">
+            <h2 class="fade-in">Ready to Elevate Your Music Experience?</h2>
+            <p class="fade-in delay-1">
+                Join thousands of music enthusiasts who have transformed their listening experience. 
+                From casual listeners to audiophiles, everyone finds their perfect soundtrack on MusicStream.
+            </p>
+            <button class="primary-btn fade-in delay-2" onclick="launchApp()" 
+                    style="padding: 22px 55px; font-size: 1.4rem;">
+                <i class="fas fa-rocket"></i> Launch MusicStream Now
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="footer-content">
+            <div class="footer-logo fade-in">
+                <i class="fas fa-music"></i> MusicStream
+            </div>
+            <div class="footer-links fade-in delay-1">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact Support</a>
+                <a href="#">API Documentation</a>
+                <a href="#">Careers</a>
+            </div>
+            <div class="social-icons fade-in delay-2">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <div class="copyright fade-in delay-3">
+                © 2024 MusicStream Pro. All rights reserved.<br>
+                Made with <i class="fas fa-heart" style="color:var(--accent);"></i> for music lovers worldwide.
+                <br><br>
+                <small>This is a portfolio project. All music streaming via YouTube API.</small>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // DYNAMIC URL SETTING - UPDATE AFTER DEPLOYMENT!
+        function getAppUrl() {
+            // For local development
+            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                return 'http://localhost:3000';
+            }
+            // For GitHub Pages deployment (if you deploy SAAS page there)
+            else if (window.location.hostname.includes('github.io')) {
+                // Your GitHub Pages URL
+                return 'https://yourusername.github.io/musicapp';
+            }
+            // For Netlify deployment - UPDATE THIS WITH YOUR ACTUAL URL
+            else {
+                // ⚠️⚠️⚠️ CHANGE THIS AFTER DEPLOYMENT ⚠️⚠️⚠️
+                // Example: return 'https://musicapp-player-xyz123.netlify.app';
+                return 'http://localhost:3000'; // Default for now
+            }
+        }
+
+        // Launch app function
+        function launchApp() {
+            const appUrl = getAppUrl();
+            console.log('🎵 Launching Music App:', appUrl);
+            window.open(appUrl, '_blank');
+        }
+
+        // Animated counters
+        function animateCounter(elementId, finalValue, suffix = '', duration = 2000) {
+            const element = document.getElementById(elementId);
+            let startValue = 0;
+            const increment = finalValue / (duration / 16);
+            
+            const timer = setInterval(() => {
+                startValue += increment;
+                if (startValue >= finalValue) {
+                    element.textContent = finalValue + suffix;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(startValue) + suffix;
+                }
+            }, 16);
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🎵 MusicStream SAAS Page Loaded');
+            console.log('App URL configured:', getAppUrl());
+            
+            // Start animated counters
+            setTimeout(() => animateCounter('songCount', 4300, '+'), 400);
+            setTimeout(() => animateCounter('userCount', 1250, '+'), 800);
+            setTimeout(() => animateCounter('playlistCount', 580, '+'), 1200);
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Add animation classes on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all sections
+            document.querySelectorAll('section').forEach(section => {
+                observer.observe(section);
+            });
+        });
+
+        // Simple page visit counter (local storage)
+        window.addEventListener('load', function() {
+            let visits = localStorage.getItem('musicstream_visits') || 0;
+            visits = parseInt(visits) + 1;
+            localStorage.setItem('musicstream_visits', visits);
+            console.log(`👋 Welcome! Page visits: ${visits}`);
+        });
+    </script>
+</body>
+</html>
