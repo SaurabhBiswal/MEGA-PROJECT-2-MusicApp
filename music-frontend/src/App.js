@@ -82,7 +82,7 @@ function App() {
 
   const fetchStats = async () => {
     try {
-      const res = await fetch('http://localhost:8080/api/auth/stats');
+      const res = await fetch('https://mega-project-2-musicapp-production.up.railway.app/api/auth/stats');
       const data = await res.json();
       setStats(data);
     } catch (e) { console.log("Stats error"); }
@@ -92,7 +92,7 @@ function App() {
   const fetchAdminStats = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch('http://localhost:8080/api/admin/stats', {
+      const res = await fetch('https://mega-project-2-musicapp-production.up.railway.app/api/admin/stats', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -115,7 +115,7 @@ function App() {
 
   const fetchUserPlaylists = async (userId) => {
     try {
-      const res = await fetchWithAuth(`http://localhost:8080/api/playlists/user/${userId}`);
+      const res = await fetchWithAuth(`https://mega-project-2-musicapp-production.up.railway.app/api/playlists/user/${userId}`);
       const result = await res.json();
       
       if (result.status === "success") {
@@ -144,7 +144,7 @@ function App() {
 
   const ensurePlaylistExists = async (userId) => {
     try {
-      const res = await fetchWithAuth(`http://localhost:8080/api/playlists/user/${userId}`);
+      const res = await fetchWithAuth(`https://mega-project-2-musicapp-production.up.railway.app/api/playlists/user/${userId}`);
       const result = await res.json();
       if (result.status === "success" && result.data) {
         setUserPlaylistId(result.data.id);
@@ -205,7 +205,7 @@ function App() {
     }
     
     try {
-      const res = await fetch(`http://localhost:8080/api/auth/register`, {
+      const res = await fetch(`https://mega-project-2-musicapp-production.up.railway.app/api/auth/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(authForm)
@@ -238,7 +238,7 @@ function App() {
     }
     
     try {
-      const res = await fetch(`http://localhost:8080/api/auth/login`, {
+      const res = await fetch(`https://mega-project-2-musicapp-production.up.railway.app/api/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
@@ -335,7 +335,7 @@ function App() {
   const removeFromPlaylist = async (songId) => {
     if(!activePlaylistId) return;
     try {
-      const res = await fetchWithAuth(`http://localhost:8080/api/playlists/${activePlaylistId}/songs/${songId}`, { 
+      const res = await fetchWithAuth(`https://mega-project-2-musicapp-production.up.railway.app/api/playlists/${activePlaylistId}/songs/${songId}`, { 
         method: 'DELETE' 
       });
       if (res.ok) {
@@ -426,8 +426,8 @@ function App() {
       const basicShareInfo = {
         id: playlistId,
         name: playlistName,
-        shareUrl: `http://localhost:8080/#/playlist/${playlistId}`,
-        qrCode: `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://localhost:8080/#/playlist/${playlistId}`
+        shareUrl: `https://mega-project-2-musicapp-production.up.railway.app/#/playlist/${playlistId}`,
+        qrCode: `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://mega-project-2-musicapp-production.up.railway.app/#/playlist/${playlistId}`
       };
       setShareInfo(basicShareInfo);
       setShowShareModal(true);
@@ -1310,3 +1310,4 @@ const styles = {
 };
 
 export default App;
+

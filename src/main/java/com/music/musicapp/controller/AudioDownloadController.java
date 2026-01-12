@@ -12,6 +12,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/download")
+@CrossOrigin(origins = "*")
 public class AudioDownloadController {
     
     @Autowired

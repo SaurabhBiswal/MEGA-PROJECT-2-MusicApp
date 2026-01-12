@@ -8,6 +8,7 @@ import java.util.*;
 
 @RestController
 @RequestMapping("/api/discover")
+@CrossOrigin(origins = "*")
 public class MusicDiscoveryController {
     
     @Autowired

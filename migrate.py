@@ -2,7 +2,7 @@ import yt_dlp
 import requests
 
 PLAYLIST_URL = "https://youtube.com/playlist?list=PLhEIwtJ9OeISGEwKsExcjrOLTpV9OqIQ9"
-BACKEND_URL = "http://localhost:8080/api/songs/add-external"
+BACKEND_URL = "https://mega-project-2-musicapp-production.up.railway.app/api/songs/add-external"
 
 def migrate_songs():
     ydl_opts = {"extract_flat": True, "skip_download": True}

@@ -28,7 +28,7 @@ const ForgotPassword = ({ onBackToLogin }) => {
 
     try {
       // ✅ FIXED: Use query parameter instead of JSON body
-      const response = await fetch(`http://localhost:8080/api/auth/forgot-password?email=${encodeURIComponent(email)}`, {
+      const response = await fetch(`https://mega-project-2-musicapp-production.up.railway.app/api/auth/forgot-password?email=${encodeURIComponent(email)}`, {
         method: 'POST'
         // No headers needed for query params
       });
@@ -78,7 +78,7 @@ const ForgotPassword = ({ onBackToLogin }) => {
     setLoading(true);
     try {
       // ✅ FIXED: Use correct endpoint
-      const response = await fetch(`http://localhost:8080/api/auth/verify-reset-token/${encodeURIComponent(resetToken)}`);
+      const response = await fetch(`https://mega-project-2-musicapp-production.up.railway.app/api/auth/verify-reset-token/${encodeURIComponent(resetToken)}`);
       const result = await response.json();
 
       if (result.status === 'success') {
@@ -124,7 +124,7 @@ const ForgotPassword = ({ onBackToLogin }) => {
     try {
       // ✅ FIXED: Use query parameters
       const response = await fetch(
-        `http://localhost:8080/api/auth/reset-password?token=${encodeURIComponent(resetToken)}&newPassword=${encodeURIComponent(newPassword)}&confirmPassword=${encodeURIComponent(confirmPassword)}`, 
+        `https://mega-project-2-musicapp-production.up.railway.app/api/auth/reset-password?token=${encodeURIComponent(resetToken)}&newPassword=${encodeURIComponent(newPassword)}&confirmPassword=${encodeURIComponent(confirmPassword)}`, 
         {
           method: 'POST'
         }
@@ -443,3 +443,4 @@ const ForgotPassword = ({ onBackToLogin }) => {
 };
 
 export default ForgotPassword;
+

@@ -12,6 +12,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/audio")
+@CrossOrigin(origins = "*")
 public class AudioController {
     
     @Autowired

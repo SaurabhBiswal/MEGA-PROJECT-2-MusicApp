@@ -19,7 +19,7 @@ const AdminDashboard = () => {
         return;
       }
 
-      const res = await fetch('http://localhost:8080/api/admin/stats', {
+      const res = await fetch('https://mega-project-2-musicapp-production.up.railway.app/api/admin/stats', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -161,3 +161,4 @@ const AdminDashboard = () => {
 };
 
 export default AdminDashboard;
+

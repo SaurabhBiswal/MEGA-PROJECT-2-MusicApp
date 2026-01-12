@@ -16,7 +16,7 @@ const Recommendations = ({ currentSong, onSelectSong }) => {
     
     setLoading(true);
     try {
-      const res = await fetch(`http://localhost:8080/api/songs/recommendations/${songId}`);
+      const res = await fetch(`https://mega-project-2-musicapp-production.up.railway.app/api/songs/recommendations/${songId}`);
       const result = await res.json();
       
       if (result.status === "success") {
@@ -91,3 +91,4 @@ const Recommendations = ({ currentSong, onSelectSong }) => {
 };
 
 export default Recommendations;
+

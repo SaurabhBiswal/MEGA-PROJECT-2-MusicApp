@@ -2,15 +2,15 @@ import axios from 'axios';
 
 // ✅ Base URLs
 const SONGS_API = axios.create({
-    baseURL: "http://localhost:8080/api/songs"
+    baseURL: "https://mega-project-2-musicapp-production.up.railway.app/api/songs"
 });
 
 const PLAYLISTS_API = axios.create({
-    baseURL: "http://localhost:8080/api/playlists"
+    baseURL: "https://mega-project-2-musicapp-production.up.railway.app/api/playlists"
 });
 
 const AUTH_API = axios.create({
-    baseURL: "http://localhost:8080/api/auth"
+    baseURL: "https://mega-project-2-musicapp-production.up.railway.app/api/auth"
 });
 
 // ✅ SONGS API
@@ -141,3 +141,4 @@ export default {
     getYouTubeId,
     copyToClipboard
 };
+

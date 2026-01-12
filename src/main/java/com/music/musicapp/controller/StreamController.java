@@ -15,6 +15,7 @@ import java.nio.file.Path;
 
 @RestController
 @RequestMapping("/api/stream")
+@CrossOrigin(origins = "*")
 public class StreamController {
     
     @Autowired

@@ -11,6 +11,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/podcasts")
+@CrossOrigin(origins = "*")
 public class PodcastController {
     
     @Autowired

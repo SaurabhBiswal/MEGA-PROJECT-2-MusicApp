@@ -8,6 +8,7 @@ import com.music.musicapp.service.RecommendationService;
 
 @RestController
 @RequestMapping("/api/recommendations")
+@CrossOrigin(origins = "*")
 public class RecommendationController {
     
     @Autowired
