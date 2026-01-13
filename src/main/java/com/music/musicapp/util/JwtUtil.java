@@ -1,4 +1,4 @@
-﻿package com.music.musicapp.util;
+package com.music.musicapp.util;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
