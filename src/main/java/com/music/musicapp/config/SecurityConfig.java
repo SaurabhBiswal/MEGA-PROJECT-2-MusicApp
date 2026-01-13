@@ -19,16 +19,16 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .cors(cors -> cors.configurationSource(corsConfigurationSource())) // Naya Lambda style syntax
+            .cors(cors -> cors.configurationSource(corsConfigurationSource()))
             .csrf(csrf -> csrf.disable())
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/auth/**").permitAll() // Sabse pehle auth allow karo
+                .requestMatchers("/api/auth/**").permitAll()
                 .requestMatchers("/api/**").permitAll() 
                 .requestMatchers("/h2-console/**").permitAll()
                 .anyRequest().permitAll()
             )
-            .headers(headers -> headers.frameOptions(frame -> frame.disable())); // H2 Console fix
+            .headers(headers -> headers.frameOptions(frame -> frame.disable()));
         
         return http.build();
     }
@@ -37,19 +37,16 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         
-        // ✅ YAHAN HAI FIX: Netlify ka link add kar diya hai
+        // ✅ NETLIFY URL ADD KIYA HAI
         configuration.setAllowedOrigins(Arrays.asList(
             "http://localhost:3000", 
-            "https://starlit-lolly-c5ae35.netlify.app" 
+            "https://starlit-lolly-c5ae35.netlify.app"
         ));
         
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        
-        // ✅ Authorization header allow karna zaroori hai JWT ke liye
         configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type", "X-Requested-With", "Accept", "Origin"));
-        
         configuration.setAllowCredentials(true);
-        configuration.setMaxAge(3600L); // Preflight request cache karne ke liye
+        configuration.setMaxAge(3600L);
         
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
